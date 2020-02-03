@@ -1,0 +1,16 @@
+          <Images />
+          <BasicElements />
+          <Navbars />
+          <Tabs />
+          <Pagination />
+          <Notifications />
+          <Typography />
+          <Javascript />
+          <Carousel />
+          <NucleoIcons />
+          <CompleteExamples />
+          <SignUp />
+          <Examples />
+          <Download />
+
+                  <IndexHeader />
