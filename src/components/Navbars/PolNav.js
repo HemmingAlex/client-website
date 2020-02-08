@@ -17,27 +17,30 @@ let history = useHistory();
 
 return (
     <div className={Style.fix}> 
-    <br/><br/>
-      <p>NavBar</p><br/>
+    <br/>
+      <p>Politics</p><br/><br/>
       <Nav vertical>
       <NavItem>
           <span>  </span>
         </NavItem>
         <NavItem className={Style.box}>
           <NavLink href="/">Home</NavLink>
+        </NavItem><br/>
+
+        <NavItem className={Style.box}>
+          <NavLink href="/PoliticalTheory">Intro</NavLink>
+        </NavItem><br/>
+
+        <NavItem className={Style.box}>
+          <NavLink href="/Intro">Part 1</NavLink>
+        </NavItem><br/>
+
+        <NavItem className={Style.box}>
+          <NavLink href="#"></NavLink>
         </NavItem>
 
-        <NavItem>
-          <NavLink disabled href="#"></NavLink>
-        </NavItem>
         <NavItem className={Style.box}>
-          <NavLink href="/Intro">intro</NavLink>
-        </NavItem><br/>
-        <NavItem className={Style.box}>
-          <NavLink href="#">b</NavLink>
-        </NavItem><br/>
-        <NavItem className={Style.box}>
-          <NavLink href="#">b</NavLink>
+          <NavLink href="#"></NavLink>
         </NavItem>
       </Nav>
       <hr />

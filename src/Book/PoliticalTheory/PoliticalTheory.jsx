@@ -11,6 +11,7 @@ import Footer from "../../components/Footers/DarkFooter";
 import { isConstructorDeclaration } from "typescript";
 
 import Tooltips from "./Tooltips";
+import Climate from "../../bot/Debate/Debate"
 
 const PoliticalTheory =() => {
  
@@ -64,6 +65,8 @@ return (
 
 
 <p><span id="hi">Utilitarianism</span></p>
+
+<Climate/>
 
   
 

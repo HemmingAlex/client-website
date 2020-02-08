@@ -25,19 +25,14 @@ let q = 0;
   class Debate extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {x: true};
+      this.state = {x: false};
       this.handleToggleClick = this.handleToggleClick.bind(this);
     }
   // state = props, if click get rid of state
     handleToggleClick()  { 
       this.setState( state => ({
         x: !state.x
-      }));
-
-   
-       q = q+1;
-       if (q>7) {q =0;}
-    
+      }));    
     }
 
     
@@ -47,28 +42,45 @@ let q = 0;
 
       const answers = [a, you, keep, pressing, you, will, win];
 
-      return (
-        <div><div>pick the right answers to gain the prize! <br/> <br/> <br/>
 
-        
+      return this.state.x? (
+         <div className={`blockquote blockquote-info ${Style.max}`}>
+
+
+  {/* <Condition peng={this.handleToggleClick}/> */}
+
+
+
+
+   <button onClick={this.handleToggleClick}>
+     exit
+    </button><p>
+  <Reason/>
+   </p>
+
         </div>
-
-
-          
-{answers[q]} <br/>
-          <button onClick={this.handleToggleClick}>
-this is "
-
-          </button>
-
-
-  <Condition peng={this.handleToggleClick}/>
-<p className="blockquote blockquote-info">
-  <Reason/> </p>
-        </div>
+      )
+      : (
+      <div className={`blockquote blockquote-info ${Style.max}`}> <button onClick={this.handleToggleClick}> enter</button></div>
       );
+      
+      
+      ;
     }
   }
 
 
   export default Debate;
+
+ // <div>pick the right answers to gain the prize! <br/> <br/> <br/>
+
+        
+//         </div>
+
+
+          
+// {answers[q]} <br/>
+//           <button onClick={this.handleToggleClick}>
+// this is "
+
+//           </button>
