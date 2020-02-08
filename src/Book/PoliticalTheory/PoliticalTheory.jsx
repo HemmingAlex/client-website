@@ -2,19 +2,27 @@ import React, {useState} from "react";
 import {
   Container,   
   UncontrolledTooltip, 
-  
+  Button,
 } 
 from 'reactstrap';
 import Style from "./Fiction.module.scss";
 import IndexNavbar from "../../components/Navbars/PolNav";
 import Footer from "../../components/Footers/DarkFooter";
+import { isConstructorDeclaration } from "typescript";
+
+import Tooltips from "./Tooltips";
 
 const PoliticalTheory =() => {
+ 
+
+
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-    
+
+ 
+
 
 return (
 
@@ -57,26 +65,9 @@ return (
 
 <p><span id="hi">Utilitarianism</span></p>
 
-         <UncontrolledTooltip placement="left" target="#hi">
-         Utilitarianism is an ethical theory that determines right from wrong by focusing on outcomes. It is a form of consequentialism. Utilitarianism holds that the most ethical choice is the one that will produce the greatest good for the greatest number.</UncontrolledTooltip>
+  
 
-<UncontrolledTooltip target="#intamb"> The tendency to perceive (i.e. interpret) ambiguous situations as sources of threat </UncontrolledTooltip>
-<UncontrolledTooltip target="#entEq"> Human rights philosophies of fairnes and marxism </UncontrolledTooltip>
-<UncontrolledTooltip target="#entInd"> Freedom, choice, Kant and property rights</UncontrolledTooltip>
-<UncontrolledTooltip target="#CAb"> Biological and Enviromental triggers</UncontrolledTooltip>
-<UncontrolledTooltip target="#CogDis">Common misunderstandings and an intuitive understanding of an important theory</UncontrolledTooltip>
-<UncontrolledTooltip target="#CogPol">The most important effect on politics</UncontrolledTooltip>
-
-
-<p><span id="intamb">Intolerance to ambiguity</span></p>
-
-
-<p><span id="entEq">Entitlment to equality</span></p>
-<p><span id="entInd">Entitlment to individual rights</span></p>
-<p><span id="CAb">Cause of Absolute philosophies.</span></p>
-<p><span id="CogDis">The cognitive dissonance process</span></p>
-<p><span id="CogPol">The effect of Cognitive dissonance on politics.</span></p>
-<p><span id="Int Study">The most interestring modern studies and experiments.</span></p>
+<p><Tooltips/></p>
 
 
 

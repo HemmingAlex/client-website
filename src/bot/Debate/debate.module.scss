@@ -1,0 +1,15 @@
+.wrap {
+    display: flex;
+}
+
+.fail {
+    color: red;
+    font-size: 30px;
+}
+
+.win {
+display: flex;
+    color: gold;
+    box-shadow: 20px 1px 00px;
+    text-indent: 20px;
+}
