@@ -183,7 +183,7 @@ function NucleoIcons() {
                   document.getElementById("shopping").scrollIntoView();
                 }}
               >
-                Shopping
+                Shoppi
               </a>
             </li>
             <li>

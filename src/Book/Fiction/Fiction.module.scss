@@ -14,12 +14,22 @@
 
 }
 .centre {
-    font-size: 10px;
-    align-content:center}
+text-indent: 10px;
+flex: auto; 
+align-items: center;
+align-self: center;
+
+
+}
 
 .flex {
     display:flex;
-    background-color:black;
+    background-color:white;
+    font-family:'Poppins',sans-serif;
+text-align: center;
+position:relative;
+box-sizing:border-box;
+vertical-align: baseline;
 }
 
 .header {
@@ -37,4 +47,14 @@ text-indent: 70px;
 
 .wrapp {
 box-shadow: darkgoldenrod;
+}
+.blue {
+    color:#0eb2e7;
+    text-align: center;
+}
+
+.border {
+
+padding:2px;
+border: solid 2px gold;
 }
