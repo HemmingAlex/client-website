@@ -1,4 +1,23 @@
 import React from "react";
+import {
+  Button,
+  Collapse,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+  NavbarBrand,
+  Navbar,
+  NavItem,
+  NavLink,
+  Nav,
+  Container,
+  UncontrolledTooltip
+} from "reactstrap";
+
+import { Link, useHistory } from "react-router-dom";
+
+
 
 // reactstrap components
 // import {
@@ -52,9 +71,16 @@ function Index() {
 
     
         <div className="main">
-          
-<LandingPage/>
-        </div>
+
+
+        Marcus Sloss
+Leave a Comment / Uncategorized / By marcussloss
+Quick Update I am digging through my files to ensure you have all the images I need applied.Quick update. All my books are in the process of getting professionally edited. Hurray! Thank you for taking the time to find out more about me. I am an avid reader and have decided to give my own …
+
+Marcus SlossRead More »  
+<NavLink to="/fiction" tag={Link}>
+back
+                  </NavLink>  </div>
         
 
       </div>
