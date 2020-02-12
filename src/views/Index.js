@@ -26,6 +26,7 @@ import { Link, useHistory } from "react-router-dom";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
+import Navy from "components/Navbars/ExamplesNavbar.js";
 import DarkFooter from "components/Footers/DarkFooter.js";
 
 // sections for this page
@@ -71,7 +72,7 @@ function Index() {
 
     
         <div className="main">
-
+<Navy />
 
         Marcus Sloss
 Leave a Comment / Uncategorized / By marcussloss

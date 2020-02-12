@@ -10,6 +10,9 @@ import Carosel from "./carosel";
 import Tab from "./LitTab";
 import News from "./LatestNews.jsx";
 import Paper from "./PaperBook.jsx";
+import Sectab from "./Sectab";
+
+
 
 const Fiction =() => {
 
@@ -40,8 +43,9 @@ return (
       <i class="fas fa-road"/>
   </div>
 
-  <Paper className={Style.box}/>
+  {/*<Paper className={Style.box}/>*/}
   <Tab/> 
+  <Sectab/>
 
 
 </div>  

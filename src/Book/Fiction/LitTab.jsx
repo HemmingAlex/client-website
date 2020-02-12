@@ -126,9 +126,9 @@ function LitTab() {
                     <img src={Fh3} className={Style.border}/>
 
                     </container>
-                    <container>
+                    <container className={Style.padding}>
                       
-<h3>Gryff The Griffin Rider (Fantastic Harem Book 1)</h3>
+<h3 className={Style.blue}>Gryff The Griffin Rider (Fantastic Harem Book 1)</h3>
 
 <div  className={Style.body}> 
 
@@ -144,7 +144,7 @@ Warning contains gore with extreme violence;
  there is a harem and on occasion a sex scene!!!
 
 </div> 
-<Button href="https://www.amazon.com/gp/product/B07YFWHDZX/ref=dbs_a_def_rwt_bibl_vppi_i1" target="_blank">Buy Paper Back</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B07YFWHDZX/ref=dbs_a_def_rwt_bibl_vppi_i1" target="_blank">Buy Paper Back</Button>
 
                     </container></div>
 
@@ -156,8 +156,8 @@ Warning contains gore with extreme violence;
                         <container><img src={FH2} className={Style.border}/></container>
                      
 
-<container>
-<h3>Gryff the Griffin Rider 2 (A Fantastic Harem)</h3> 
+<container className={Style.padding}>
+<h3 className={Style.blue}>Gryff the Griffin Rider 2 (A Fantastic Harem)</h3> 
 
 <div  className={Style.body}> 
 
@@ -174,7 +174,7 @@ and excitement awaits. Gryff now calls Vin home.
  
   </div> 
   
-  <Button href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">Buy Paper Back</Button>
+  <Button className={Style.button} href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">Buy Paper Back</Button>
 
          </container>         </div>
                     </TabPane>
@@ -184,8 +184,8 @@ and excitement awaits. Gryff now calls Vin home.
 <container><img src={FH3} className={Style.border}/></container>
 
 
-<container>
-<h3>Gryff the Griffin Rider 3 (A Fantastic Harem)</h3> 
+<container className={Style.padding}>
+<h3 className={Style.blue}>Gryff the Griffin Rider 3 (A Fantastic Harem)</h3> 
 
 <div  className={Style.body}> 
 
@@ -196,7 +196,7 @@ Adventure with Gryff as he strives to save Vin and the Universe!
 
 </div> 
 
-<Button href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">Buy Paper Back</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">Buy Paper Back</Button>
 
 </container>       
   </div>
@@ -211,8 +211,8 @@ Adventure with Gryff as he strives to save Vin and the Universe!
 <container><img src={Fh4} className={Style.border}/></container>
 
 
-<container>
-<h3>Gryff The Gaming Adventurer (A Fantastic Harem Book 4) </h3> 
+<container className={Style.padding}>
+<h3 className={Style.blue}>Gryff The Gaming Adventurer (A Fantastic Harem Book 4) </h3> 
 
 <div  className={Style.body}> 
 WARNING - This book contains intense sex scenes. 
@@ -228,7 +228,7 @@ Gryff adventures in the Gaming Verse on his quest to return home.
 
 </div> 
 
-<Button href="https://www.amazon.com/gp/product/B0849LPTKR/ref=dbs_a_def_rwt_hsch_vapi_taft_p1_i0" target="_blank">Buy Paper Back</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0849LPTKR/ref=dbs_a_def_rwt_hsch_vapi_taft_p1_i0" target="_blank">Buy Paper Back</Button>
 
 </container>         </div>
                     </TabPane>
@@ -246,8 +246,8 @@ Gryff adventures in the Gaming Verse on his quest to return home.
 
 </container>
 
-<Container>
-<h3>Augmented Tycoon (Game of Planets Book 1)</h3>
+<Container className={Style.padding}>
+<h3 className={Style.blue}>Augmented Tycoon (Game of Planets Book 1)</h3>
 
 
 <div  className={Style.body}> 
@@ -263,7 +263,7 @@ us humans for failing to integrate and advance. Insert Mack… A young man
 
 </div>
 
-<Button href="https://www.amazon.com/gp/product/B07Z5S29D6/ref=dbs_a_def_rwt_bibl_vppi_i2" target="_blank">Buy Paper Back</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B07Z5S29D6/ref=dbs_a_def_rwt_bibl_vppi_i2" target="_blank">Buy Paper Back</Button>
 
 </Container>
 

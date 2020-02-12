@@ -6,7 +6,7 @@ import Style from "./Fiction.module.scss";
  class LatestNews extends Component {
     render() {
         return (
-            <div className={Style.wide}> 
+            <div className={Style.wide}> <br/><br/>
                   <h1 className={Style.blue}>Marcus Sloss</h1>  
 
 <h1><i>LATEST NEWS!</i></h1>

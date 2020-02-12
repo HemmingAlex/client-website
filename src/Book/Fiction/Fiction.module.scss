@@ -3,6 +3,7 @@
     font-family: Arial, Helvetica, sans-serif; 
     text-align:left;
     font-weight: bold;
+    margin: 30px;
 }
 
 .phat {
@@ -11,7 +12,7 @@
 
 .box {
     display:flex;
-    box-shadow: 0pc 0px 10px 5px;
+    box-shadow: 0pc 0px 10px 5px darkgray   ;
     background: content-box white;}
     
 
@@ -57,8 +58,10 @@ box-shadow: darkgoldenrod;
 
 }
 .blue {
-    color:#0eb2e7;
+    color:darkgoldenrod;
     text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 2px 10px darkgray;
 }
 
 .border {
@@ -71,3 +74,11 @@ min-width: 400px;
 .flex {
     display:flex;
 }
+
+.padding {
+
+    padding:30px;
+}
+.button {position: absolute;
+bottom: 100px;
+right: 200px;}
