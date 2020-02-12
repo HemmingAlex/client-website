@@ -35,7 +35,7 @@ function LandingPageHeader() {
           <Container>
             <h1 className="title"> Marcus Sloss <br/> <br/>
             <br/>
-            Lit RPG author</h1>
+            Max Geek</h1>
             <div className="text-center">
               <Button
                 className="btn-icon btn-round"

@@ -8,7 +8,7 @@ import Read from '../../assets/img/assets/ReadThanks.jpg';
 import Head from "../../components/Headers/LitHeader";
 import Carosel from "./carosel";
 import Tab from "./LitTab";
-
+import News from "./LatestNews.jsx";
 import Paper from "./PaperBook.jsx";
 
 const Fiction =() => {
@@ -21,44 +21,30 @@ return (
 
 <div className={Style.background}>
   <Nav/>
-<Head/> 
-<div className={Style.wrap}>
- <Container>
-<div className={Style.flex}> 
-
-<img src={Read} className={Style.border}/>
-
-<Container>
-  <h1 className={Style.blue}>Marcus Sloss</h1>  
-
-<h1><i>LATEST NEWS!</i></h1>
-
-<p>Augmented Tycoon is now professionally edited.
-Book 3 of Gryff the Griffin Rider is complete. Releasing 12-5-19
-Exit Cover for Gryff 3 done.
-New series being written!</p>
-
-</Container>
-
-</div>
-
- </Container>
-
-   </div>
-
-   <div className={Style.centre}> 
-   <i class="fas fa-road"/>
- </div>
-
- <Paper/>
-<Tab/> 
-  </div>  
+  <Head/> 
+  <div className={Style.wrap}>
+    <Container>
 
 
+      <div className={Style.box}> 
+      <img src={Read} className={Style.border}/>
+        <News/>
 
 
+    </div>
+  </Container>
+
+  </div>
+
+    <div className={Style.centre}> 
+      <i class="fas fa-road"/>
+  </div>
+
+  <Paper className={Style.box}/>
+  <Tab/> 
 
 
+</div>  
 );
 
 };

@@ -16,7 +16,7 @@ import Fh3 from "../../assets/img/assets/GriffOne.jpg"
 
             <Container>
 
-            <div className={Style.flex}>
+            <div className={Style.box}>
 
 
                 <Container className={Style.wrap}>
