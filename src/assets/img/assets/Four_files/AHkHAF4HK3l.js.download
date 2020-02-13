@@ -1,0 +1,791 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["6keSt"]); }
+
+__d("FBRTCCallConstants",[],(function(a,b,c,d,e,f){e.exports={FBRTCCallConnectionType:{MISSED_CALL:4,CONNECTED_CALL:5},FBRTCCallType:{VOICE_CALL:1,VIDEO_CALL:2,COLLAB_VIDEO_CALL:3,COLLAB_SCREEN_SHARE_CALL:4}}}),null);
+__d("FBRTCCapability",[],(function(a,b,c,d,e,f){e.exports={SUPPORT_AUDIO_DEPRECATED:0,SUPPORT_VIDEO_DEPRECATED:1,SUPPORT_EXPERIMENTS_IN_JOIN_RESPONSE:2,SUPPORT_NEW_PARTICIPANT_STATES:3,SUPPORT_SDP_RENEGOTIATION:4,SUPPORT_MWPP:5,REQUIRE_FULL_SDP_IN_SMU:6,SUPPORT_PRECONNECT:7}}),null);
+__d("FBRTCDeviceStatus",[],(function(a,b,c,d,e,f){e.exports={OK:0,NOT_SUPPORTED:1,IN_ANOTHER_CALL:10}}),null);
+__d("FBRTCDismissReason",[],(function(a,b,c,d,e,f){e.exports={CALL_ENDED:0,ANSWERED_ON_ANOTHER_DEVICE:1,IN_ANOTHER_CALL:2,CONNECTION_DROPPED:3,REJECTED_ON_ANOTHER_DEVICE:4,REMOVED_BY_PARTICIPANT:5,REJECTED_BY_CALLEE:6,INTERNAL_ERROR:7,CALL_ENDED_BY_PRODUCT:9}}),null);
+__d("FBRTCHangupReason",[],(function(a,b,c,d,e,f){e.exports={IGNORE_CALL:0,HANGUP_CALL:1,NO_ANSWER_TIMEOUT:2,CLIENT_ERROR:3,IN_ANOTHER_CALL:4,CLIENT_INTERRUPTED:5,SESSION_MIGRATED:6}}),null);
+__d("FBRTCMediaType",[],(function(a,b,c,d,e,f){e.exports={AUDIO:0,VIDEO:1,DATA:2}}),null);
+__d("FBRTCRtcResponseStatusCode",[],(function(a,b,c,d,e,f){e.exports={OK:200,BAD_REQUEST:400,UNAUTHORIZED:401,NOT_FOUND:404,METHOD_NOT_ALLOWED:406,CONFLICT:409,CONDITIONAL_REQUEST_FAILED:412,SERVER_INTERNAL_ERROR:500,SERVICE_UNAVAILABLE:503}}),null);
+__d("FBRTCVideoQuality",[],(function(a,b,c,d,e,f){e.exports={LOW:0,MEDIUM:1,HIGH:2,HD:3,NUM_QUALITIES:4}}),null);
+__d("assignMediaStream",[],(function(a,b,c,d,e,f){"use strict";var g=window.URL||window.webkitURL,h="srcObject"in window.HTMLMediaElement.prototype,i="mozSrcObject"in window.HTMLMediaElement.prototype;function a(a,b){h?a.srcObject=b:i?a.mozSrcObject=b:(typeof a.src==="string"&&g.revokeObjectURL(a.src),a.src=b!=null?g.createObjectURL(b):"")}e.exports=a}),null);
+__d("FBRTCUtils",["AsyncRequest","FBIDCheck","FBRTCConfig","RTCConfig","RTWebUserActionLogger","assignMediaStream","emptyFunction"],(function(a,b,c,d,e,f){__p&&__p();var g=6e3,h="setSinkId"in window.HTMLMediaElement.prototype;a={attachMediaStream:function(a,c){if(a==null)return;b("assignMediaStream")(a,c);if(c){c=a.play();c!==void 0&&c["catch"](function(a){b("RTWebUserActionLogger").logError({errorDomain:"autoplay was prevented",errorType:a.toString()})})}},aboutEqual:function(a,b){return a-b<.01&&b-a<.01},sendServerRequest:function(a,c,d,e,f,h){c===void 0&&(c=b("emptyFunction"));d===void 0&&(d=b("emptyFunction"));e===void 0&&(e=!1);f===void 0&&(f=g);h===void 0&&(h={});a=new(b("AsyncRequest"))().setURI(a).setData(h).setAllowCrossPageTransition(!0).setHandler(c).setErrorHandler(d).setTimeoutHandler(f,function(){d()});e&&a.setOption("asynchronous_DEPRECATED",!1);a.send()},supportsSetSink:function(){return h},isPeerVCEndpoint:function(a){var c=b("FBRTCConfig").isVCEndpointCall();return c!==void 0?c:!!a&&!b("FBIDCheck").isUser_deprecated(a)&&b("RTCConfig").CollabVCEndpointsVideoCallGK},isCollabTrigger:function(a){return a==="quickdial"||a==="meeting_room_page_profile"}};e.exports=a}),null);
+__d("RTCEndCallReason",["FBRTCConstants","FBRTCDismissReason","FBRTCHangupReason","FBRTCRtcResponseStatusCode","RTWebStrings"],(function(a,b,c,d,e,f){"use strict";__p&&__p();var g=b("FBRTCConstants").CallEndReason,h=b("FBRTCConstants").CollabCallEndSubreason;a=function(){__p&&__p();function a(a){this.$3="local",typeof a==="string"||a instanceof String?this.$1=b("FBRTCConstants").endCallReasonFromString(a):this.$1=a}var c=a.prototype;c.setSubreason=function(a){this.$2=a;return this};c.getSubreason=function(){return this.$2};c.setRemoteEnded=function(a){this.$3=a?"remote":"local";return this};c.getRemoteEnded=function(){return this.$3==="remote"};c.toStrName=function(a){a===void 0&&(a=!0);return a?this.$4()+"_"+this.$3:this.$4()};c.$4=function(){return b("FBRTCConstants").callEndReasonString(this.$1)};c.getReasonID=function(){return this.$1};c.toString=function(a){var b;a===void 0&&(a=!1);b=((b=this.$5(a))!=null?b:"").toString();return a?b+" "+this.$6():b};c.$5=function(a){__p&&__p();switch(this.$1){case g.NO_ANSWER_TIMEOUT:case g.IGNORE_CALL:return b("RTWebStrings").noAnswer;case g.OTHER_NOT_CAPABLE:if(this.$2===h.MCU_INVALID_STREAM_CONFIGURATION)return b("RTWebStrings").invalidStreamConfiguration;case g.INCOMING_TIMEOUT:case g.NO_PERMISSION:case g.OTHER_CARRIER_BLOCKED:return b("RTWebStrings").unreachable;case g.SIGNALING_MESSAGE_FAILED:case g.WEBRTC_ERROR:case g.NO_UI_ERROR:case g.CALLER_NOT_VISIBLE:case g.CLIENT_ERROR:return b("RTWebStrings").callFailed;case g.UNSUPPORTED_VERSION:return b("RTWebStrings").cannotConnect;case g.IN_ANOTHER_CALL:return b("RTWebStrings").inAnotherCall;case g.CARRIER_BLOCKED:return b("RTWebStrings").switchToWiFi;case g.CLIENT_INTERRUPTED:return b("RTWebStrings").callInterrupted;case g.HANGUP_CALL:case g.ACCEPT_AFTER_HANGUP:return a?"":b("RTWebStrings").callEnded;case g.CONNECTION_DROPPED:return b("RTWebStrings").connectionLost;case g.OTHER_INSTANCE_HANDLED:return null;case g.CLIENT_ENCRYPTION_ERROR:return b("RTWebStrings").clientEncryptionError;case g.INACTIVE_TIMEOUT:return b("RTWebStrings").inactive;default:return null}};c.$6=function(){__p&&__p();var a;if(this.$1!==g.OTHER_NOT_CAPABLE&&this.$1!==g.SIGNALING_MESSAGE_FAILED&&this.$1!==g.HANGUP_CALL&&this.$1!==g.ACCEPT_AFTER_HANGUP)return"";switch(this.$2){case h.REMOTE_PEER_HANGUP:return"Call ended";case h.REMOTE_PEER_REJECT:return"Call declined";case h.CLOSED_BY_MCU:return"Call expired";case h.CLOSED_AS_STALE:return"Server failed, call is stale";case h.CALL_INITIALIZATION_FAILED:return"Call initialization to room failed";case h.SIP_CONNECTION_INITIALIZATION_FAILED:return"No Answer";case h.LOST_MCU_CONNECTION:return"MCU Media connection failed";case h.LOST_MCU_THRIFT_CONNECTION:return"MCU infrastructure dropped connection";case h.LOST_SIP_ADAPTER_CONNECTION:return"SIP infrastructure dropped connection";case h.MCU_NO_AUDIO_STREAM:return"Invalid audio stream";case h.MCU_INVALID_STREAM_CONFIGURATION:return"Invalid stream configuration";case h.INVALID_MEETING_ID:return"Invalid meeting ID";case h.UNKNOWN:default:a=(a=this.$2)!=null?a:"Unknown";return this.$2!=null&&this.$2!==""?"Unexpected call failure: "+a:"Call ended"}};a.fromHangupReason=function(c){switch(c){case b("FBRTCHangupReason").IGNORE_CALL:return new a(g.IGNORE_CALL);case b("FBRTCHangupReason").NO_ANSWER_TIMEOUT:return new a(g.NO_ANSWER_TIMEOUT);case b("FBRTCHangupReason").HANGUP_CALL:return new a(g.HANGUP_CALL);case b("FBRTCHangupReason").CLIENT_ERROR:return new a(g.CLIENT_ERROR);case b("FBRTCHangupReason").IN_ANOTHER_CALL:return new a(g.IN_ANOTHER_CALL);case b("FBRTCHangupReason").CLIENT_INTERRUPTED:return new a(g.CLIENT_INTERRUPTED);default:return new a(g.HANGUP_CALL)}};a.subreasonFromDismissRequest=function(a){if(!a)return null;switch(a.reason){case b("FBRTCDismissReason").REMOVED_BY_PARTICIPANT:return"REMOVED_BY_PARTICIPANT";default:return null}};a.fromDismissRequest=function(c){__p&&__p();if(!c)return new a(g.HANGUP_CALL);switch(c.reason){case b("FBRTCDismissReason").ANSWERED_ON_ANOTHER_DEVICE:case b("FBRTCDismissReason").REJECTED_ON_ANOTHER_DEVICE:return new a(g.OTHER_INSTANCE_HANDLED);case b("FBRTCDismissReason").CALL_ENDED:return new a(g.HANGUP_CALL);case b("FBRTCDismissReason").IN_ANOTHER_CALL:return new a(g.IN_ANOTHER_CALL);case b("FBRTCDismissReason").CONNECTION_DROPPED:return new a(g.CONNECTION_DROPPED);case b("FBRTCDismissReason").REMOVED_BY_PARTICIPANT:return new a(g.HANGUP_CALL);case b("FBRTCDismissReason").REJECTED_BY_CALLEE:return new a(g.IGNORE_CALL);case b("FBRTCDismissReason").INTERNAL_ERROR:return new a(g.SIGNALING_MESSAGE_FAILED);default:return new a(g.HANGUP_CALL)}};a.fromResponseStatusCode=function(c){switch(c){case b("FBRTCRtcResponseStatusCode").PRECONDITION_FAILURE:case b("FBRTCRtcResponseStatusCode").METHOD_NOT_ALLOWED:case b("FBRTCRtcResponseStatusCode").UNAUTHORIZED:return new a(g.NO_PERMISSION);case b("FBRTCRtcResponseStatusCode").SERVICE_UNAVAILABLE:return new a(g.SIGNALING_MESSAGE_FAILED);case b("FBRTCRtcResponseStatusCode").SERVER_INTERNAL_ERROR:case b("FBRTCRtcResponseStatusCode").BAD_REQUEST:case b("FBRTCRtcResponseStatusCode").BUSY_HERE:case b("FBRTCRtcResponseStatusCode").CONDITIONAL_REQUEST_FAILED:case b("FBRTCRtcResponseStatusCode").NOT_FOUND:return new a(g.CLIENT_ERROR);default:return new a(g.HANGUP_CALL)}};return a}();e.exports=a}),null);
+__d("RTCMediaDevices",["invariant","Promise","RTCOnDeviceChangePoller"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();var h=navigator.mediaDevices&&typeof navigator.mediaDevices.enumerateDevices==="function",i=window.MediaStreamTrack&&window.MediaStreamTrack.getSources==="function",j=1e3,k;a={addEventListener:function(a,c){if(a==="devicechange"&&b("RTCOnDeviceChangePoller").isNeeded()){k||(k=new(b("RTCOnDeviceChangePoller"))(j));k.add(c);return}var d=navigator;d=d.mediaDevices;d&&"addEventListener"in d&&d.addEventListener(a,c)},removeEventListener:function(a,c){if(a==="devicechange"&&b("RTCOnDeviceChangePoller").isNeeded()){k&&k.remove(c);return}var d=navigator;d=d.mediaDevices;d&&"removeEventListener"in d&&d.removeEventListener(a,c)},isSupported:function(a){switch(a){case"enumerateDevices":return h||i;default:return Boolean(navigator.mediaDevices)}},enumerateDevices:function(){if(h){navigator.mediaDevices||g(0,4492);return b("Promise").resolve(navigator.mediaDevices.enumerateDevices())}else if(i)return new(b("Promise"))(function(a){return window.MediaStreamTrack.getSources(a)}).then(l);return b("Promise").reject(new Error("enumerateDevices() not supported"))},filterDevicesOfKind:function(a,b){return a.filter(function(a){return a.kind===b})}};function l(a){return a.map(function(a){var b=a.id,c=a.kind;a=a.label;return{deviceId:b,groupId:"",kind:c==="video"?"videoinput":"audioinput",label:a}})}e.exports=a}),null);
+__d("RTCOnDeviceChangePoller",["Promise","FBRTCLogger","RTCMediaDevices"],(function(a,b,c,d,e,f){__p&&__p();a=function(){"use strict";__p&&__p();a.isNeeded=function(){var a=navigator;a=a.mediaDevices;return!b("RTCMediaDevices").isSupported("enumerateDevices")||a&&"ondevicechange"in a?!1:!0};function a(a){__p&&__p();var c=this;this.$1=[];this.$2="";this.$4=null;this.$7=function(){__p&&__p();b("RTCMediaDevices").enumerateDevices().then(function(a){__p&&__p();a=a.map(function(a){return a.deviceId+":"+a.label+":"+a.groupId}).sort().join("~");if(a===c.$2)return;c.$2=a;for(var a=c.$1,b=Array.isArray(a),d=0,a=b?a:a[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var e;if(b){if(d>=a.length)break;e=a[d++]}else{d=a.next();if(d.done)break;e=d.value}e=e;try{e()}catch(a){}}})["catch"](function(a){return b("Promise").resolve()}).then(function(){c.$4=window.setTimeout(c.$7,c.$3)})["catch"](function(a){})};this.$3=a}var c=a.prototype;c.add=function(a){this.$1.push(a),this.$5()};c.remove=function(a){this.$1=this.$1.filter(function(b){return b!==a}),this.$6()};c.$5=function(){if(this.$4!==null)return;this.$4=window.setTimeout(this.$7,0)};c.$6=function(){if(this.$1.length>0)return;this.$4!==null&&(window.clearTimeout(this.$4),this.$4=null)};return a}();e.exports=a}),null);
+__d("RTCUserMediaConstraints",["FBRTCConstants","FBRTCSupport","RTCConfig"],(function(a,b,c,d,e,f){"use strict";__p&&__p();a=b("FBRTCConstants").RTCConstraints;var g=b("FBRTCConstants").VideoQuality,h={width:a.FHD_WIDTH,height:a.FHD_HEIGHT,frameRate:a.FRAME_RATE},i={width:a.HD_WIDTH,height:a.HD_HEIGHT,frameRate:a.FRAME_RATE},j={width:a.SD_WIDTH,height:a.SD_HEIGHT,frameRate:a.FRAME_RATE},k={width:a.LQ_WIDTH,height:a.LQ_HEIGHT,frameRate:a.LQ_FRAME_RATE},l={audio:function(a){return a?{deviceId:{exact:a}}:!0},video:function(a,c,d){d===void 0&&(d=b("RTCConfig").CollaborationCallQuality.videoToRoom);c=c?{deviceId:{exact:c}}:null;if(a===g.CUSTOM_VIDEO)return babelHelpers["extends"]({},d,c);if(b("FBRTCSupport").isMobileDevice())return{facingMode:{ideal:"user"}};d=n(a);a=m(a)?k:p(d);return babelHelpers["extends"]({width:o(d,"width",a),height:o(d,"height",a),frameRate:o(d,"frameRate",{frameRate:10})},c)},chromeMediaSource:function(a,b){a=a.video;a=l.chromify(a);if(typeof a!=="object")return{audio:!1,video:Boolean(a)};var c=a.mandatory;a=a.optional;a=a===void 0?[]:a;return{audio:!1,video:{mandatory:babelHelpers["extends"]({},c,{chromeMediaSource:"desktop",chromeMediaSourceId:b}),optional:[{googTemporalLayeredScreencast:!0}].concat(a)}}},chromify:function(a,b){__p&&__p();if(!a||typeof a!=="object")return Boolean(a);if(!s(a))return a;b=b?b.optionalConstraintsOnly:!1;var c=a.mandatory;c=c===void 0?{}:c;var d=a.optional;d=d===void 0?[]:d;var e=Object.entries(a);for(var f=0;f<e.length;f++){var g=e[f],h=g[0];g=g[1];if(h==="require"||h==="advanced"||h==="mediaSource")continue;g=g&&typeof g==="object"?g:{ideal:g};Number.isFinite(g.exact)&&(g.min=g.exact,g.max=g.exact);var i=g.ideal,j=g.exact;if(i!==void 0)if(Number.isFinite(i)){var k;d.push((k={},k[r(h,"min")]=i,k),(k={},k[r(h,"max")]=i,k))}else{d.push((k={},k[r(h)]=i,k))}if(!b)if(j!==void 0&&!Number.isFinite(j))c[r(h)]=j;else{i=["min","max"];for(var k=0;k<i.length;k++){j=i[k];Number.isFinite(g[j])&&(c[r(h,j)]=g[j])}}}a.advanced&&d.push.apply(d,a.advanced);j={};Object.keys(c).length>0?j.mandatory=c:b&&(j.mandatory={});d.length>0&&(j.optional=d);return j}};function m(a){return a===g.HD_IDEAL_LQ_REQUIRED_VIDEO||a===g.FHD_IDEAL_LQ_REQUIRED_VIDEO}function n(a){switch(a){case g.FHD_VIDEO:case g.FHD_IDEAL_LQ_REQUIRED_VIDEO:return h;case g.HD_VIDEO:case g.HD_IDEAL_LQ_REQUIRED_VIDEO:return i;case g.LQ_VIDEO:return k;case g.SD_VIDEO:return j;default:return i}}function o(a,b,c){c===void 0&&(c=p(a));var d=a[b];return{min:Math.min(c[b],d),max:Math.max(q(a)[b],d),ideal:d}}function p(a){switch(a){case h:return i;case i:return j;case j:case k:default:return k}}function q(a){switch(a){case k:return j;case j:return i;case i:case h:default:return h}}function r(b,a){return a?""+a+b.charAt(0).toUpperCase()+b.slice(1):b==="deviceId"?"sourceId":b}function s(a){return Object.keys(a).some(function(a){return a!=="mandatory"&&a!=="optional"})}e.exports=l}),null);
+__d("RTCAudioTrackNoiseDetector",["invariant","Promise","MediaStream"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();var h="audio track with absolute silence",i="audio track data timeout",j='wrong track type, expected "audio"',k=100;a={ABSOLUTE_SILENCE_ERROR:h,DATA_TIMEOUT_ERROR:i,WRONG_TRACK_TYPE_ERROR:j,detect:function(a,c){__p&&__p();if("kind"in a&&a.kind!=="audio")return b("Promise").reject(new Error(j));var d=new(b("MediaStream"))();d.addTrack(a);var e=new AudioContext(),f=e.createMediaStreamSource(d),l=e.createScriptProcessor(0,1,1),m=k,n=function(){__p&&__p();l!=null||g(0,2865);l.onaudioprocess=null;l.disconnect();l=null;f!=null||g(0,2866);f.disconnect();f=null;d!=null||g(0,2867);d.removeTrack(a);d=null;e!=null||g(0,2868);return b("Promise").resolve(e.close())["catch"](function(){return b("Promise").resolve()}).then(function(){e=null})};return b("Promise").race([new(b("Promise"))(function(a,b){__p&&__p();l!=null||g(0,2865),l.onaudioprocess=function(c){__p&&__p();c=c.inputBuffer;for(var c=c.getChannelData(0),d=Array.isArray(c),e=0,c=d?c:c[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var f;if(d){if(e>=c.length)break;f=c[e++]}else{e=c.next();if(e.done)break;f=e.value}f=f;if(f!==0){a();return}}m>0?m--:b(new Error(h))},f!=null||g(0,2866),f.connect(l),e!=null||g(0,2868),l.connect(e.destination)}),new(b("Promise"))(function(a){return window.setTimeout(a,c)}).then(function(){throw new Error(i)})]).then(function(){return n()})["catch"](function(a){return n().then(function(){throw a})})}};e.exports=a}),null);
+__d("RTCVideoTrackActivityDetector",["invariant","Promise","MediaStream","assignMediaStream"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();var h="video track playback timeout",i="unexpected video track ready state",j='wrong track type, expected "video"';a={PLAYBACK_TIMEOUT_ERROR:h,WRONG_READY_STATE_ERROR:i,WRONG_TRACK_TYPE_ERROR:j,detect:function(a,c){__p&&__p();if("kind"in a&&a.kind!=="video")return b("Promise").reject(new Error(j));var d=document.createElement("video");d.muted=!0;var e=new(b("MediaStream"))();e.addTrack(a);var f,k=null,l=function(){window.clearInterval(k),d&&(d.pause(),b("assignMediaStream")(d,null),d.removeEventListener("timeupdate",f),d=null),e&&(e.removeTrack(a),e=null)};return b("Promise").race([new(b("Promise"))(function(c,h){d!=null||g(0,5995),b("assignMediaStream")(d,e),f=function(b){d!=null||g(0,5995),d.currentTime>0&&(a.readyState==="live"?(c(),l()):h(new Error(i)))},b("Promise").resolve(d.pause()).then(function(){d!=null||g(0,5995);return d.play()}).then(function(){f(),d!=null||g(0,5995),d.addEventListener("timeupdate",f),k=window.setInterval(f,50)})["catch"](function(a){return h(a)})}),new(b("Promise"))(function(a){return window.setTimeout(a,c)}).then(function(){throw new Error(h)})])["catch"](function(a){l();throw a})}};e.exports=a}),null);
+__d("RTCMediaStreamValidator",["Promise","RTCAudioTrackNoiseDetector","RTCVideoTrackActivityDetector"],(function(a,b,c,d,e,f){"use strict";__p&&__p();var g="no audio tracks",h="no video tracks",i="too many audio tracks",j="too many video tracks",k="unexpected audio track(s)",l="unexpected video track(s)";a={NO_AUDIO_TRACKS_ERROR:g,NO_VIDEO_TRACKS_ERROR:h,TOO_MANY_AUDIO_TRACKS_ERROR:i,TOO_MANY_VIDEO_TRACKS_ERROR:j,UNEXPECTED_AUDIO_TRACKS_ERROR:k,UNEXPECTED_VIDEO_TRACKS_ERROR:l,validate:function(a,c,d,e){__p&&__p();d===void 0&&(d={});e===void 0&&(e={});d=d;var f=d.audio;f=f===void 0?!0:f;d=d.video;d=d===void 0?!0:d;e=e;var g=e.audio;g=g===void 0?1e3:g;e=e.video;e=e===void 0?1e3:e;return b("Promise").all([m(a,c,f,g),n(a,c,d,e)]).then(function(){return a})}};function m(a,c,d,e){var f=a.getAudioTracks();if(!c.audio)return f.length>0?b("Promise").reject(new Error(k)):b("Promise").resolve(a);if(f.length<1)return b("Promise").reject(new Error(g));else if(f.length>1)return b("Promise").reject(new Error(i));return d?b("RTCAudioTrackNoiseDetector").detect(f[0],e).then(function(){return a}):b("Promise").resolve(a)}function n(a,c,d,e){var f=a.getVideoTracks();if(!c.video)return f.length>0?b("Promise").reject(new Error(l)):b("Promise").resolve(a);if(f.length<1)return b("Promise").reject(new Error(h));else if(f.length>1)return b("Promise").reject(new Error(j));return d?b("RTCVideoTrackActivityDetector").detect(f[0],e).then(function(){return a}):b("Promise").resolve(a)}e.exports=a}),null);
+__d("RTWebClientFeatureGating",["CurrentUser","FBRTCConfig","FBRTCExperiment","FBRTCSupport","gkx"],(function(a,b,c,d,e,f){"use strict";__p&&__p();a={isVCCallOrWorkUser:function(){return b("FBRTCConfig").isVCEndpointCall()||b("CurrentUser").isWorkUser()},canCallMWeb:function(){return b("gkx")("797400")},shouldShowEndCallQPs:function(){return b("gkx")("867914")},shouldShowCreateVCLButton:function(){return b("gkx")("947293")},draggableSelfView:function(){return b("FBRTCExperiment").gen("rtc_www_larger_self_view").getBool("draggable_self_view",!1)},endCallSurveyDropdownOptions:function(){return!this.isVCCallOrWorkUser()},canUseMWVideoFilters:function(){return!b("CurrentUser").isWorkUser()&&b("FBRTCSupport").isVideoFilterEffectSupported()&&b("FBRTCExperiment").gen("rtc_www_video_chat_filters").getBool("use_filters_mw",!1)},isChatEnabled:function(){if(b("FBRTCConfig").isVCEndpointCall())return!1;return b("CurrentUser").isWorkUser()&&!b("gkx")("1020560")?!1:!0},isGroupChatEnabled:function(){return!1},canUseP2PVideoFilters:function(){return!b("CurrentUser").isWorkUser()&&b("FBRTCSupport").isVideoFilterEffectSupported()&&b("gkx")("678346")&&!this.stopVideoWhenMute()},isGuestLoginEnabled:function(){return b("gkx")("678347")},useNewIncomingCallDialog:function(){return b("FBRTCExperiment").getIncomingCallExperiments().getBool("use_new_incoming_call_dialog",!1)},answerCallWithThreeButtons:function(){return b("FBRTCExperiment").getIncomingCallExperiments().getBool("use_three_buttons",!1)},callUnification:function(){return b("FBRTCExperiment").gen("rtc_www_call_unification").getBool("in_call_background_updated",!1)},shouldUseRealMultiwayAppID:function(){return b("gkx")("678349")},canUseMultiwaySandbox:function(){return b("gkx")("678350")},stopVideoWhenMute:function(){if(b("FBRTCConfig").isVCEndpointCall())return!1;var a=b("FBRTCExperiment").gen("turnoff_camera_when_facemute");return a.getBool("camera_off",!1)},restartVideoWithTrackAPI:function(){var a=b("FBRTCExperiment").gen("turnoff_camera_when_facemute");return a.getBool("track_api",!1)},shouldAlwaysShowRedial:function(){return!this.isVCCallOrWorkUser()},disableOpusStereo:function(){return b("gkx")("678351")},shouldApplySdpMidTranslation:function(){return b("gkx")("700608")},preserveFirefoxInactiveDataChannelBlock:function(){return b("gkx")("724606")},showMojavePermissionsWarning:function(){return navigator.userAgent.indexOf("Intel Mac OS X 10_14")!==-1},alwaysOpenChatTab:function(){return b("FBRTCExperiment").gen("rt_web_fb_profile_rtc_buttons").getBool("open_chat_tab",!1)},shouldAlwaysShowStarRating:function(){return b("FBRTCConfig").isVCEndpointCall()?!1:b("FBRTCExperiment").gen("rtc_www_p2p_end_call_screen").getBool("persist_star_rating",!0)},shouldShowNetworkQualityIndicator:function(){return this.isVCCallOrWorkUser()?!1:b("FBRTCExperiment").getMediaQualityExperiments().getBool("show_network_indicator",!1)},shouldMonitorNetworkQuality:function(){return this.isVCCallOrWorkUser()?!1:b("FBRTCExperiment").getMediaQualityExperiments().getBool("monitor_network_quality",!1)},preferIsacForGroupCalls:function(){return!b("FBRTCConfig").isVCEndpointCall()}};e.exports=a}),null);
+__d("generateRTCTransactionID",["randomInt"],(function(a,b,c,d,e,f){"use strict";function a(){return String(b("randomInt")(0,4294967294)+1)}e.exports=a}),null);
+__d("RTCUtils",["invariant","Promise","CurrentUser","FBLogger","FBRTCConfig","FBRTCLogger","FBRTCUtils","RTCAudioTrackNoiseDetector","RTCConfig","RTCEndCallReason","RTCMediaDevices","RTCMediaStreamValidator","RTCScreenSharing","RTCUser","RTCUserMediaConstraints","RTCVideoTrackActivityDetector","RTWebClientFeatureGating","RTWebUserActionLogger","URI","UserAgent","UserMediaRequestError","generateRTCTransactionID"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();var h,i=b("RTCAudioTrackNoiseDetector").DATA_TIMEOUT_ERROR,j=b("RTCVideoTrackActivityDetector").PLAYBACK_TIMEOUT_ERROR,k={isGroupCall:function(a){return a.split(":")[0]==="GROUP"},isMessengerCall:function(a){return a.split(":")[0]==="MESSENGER"},isRoomCall:function(a){return a.split(":")[0]==="ROOM"},isPeerCall:function(a){return a.split(":")[0]==="PEER"},isAlohaCall:function(a){return a.split(":")[0]==="ALOHA"},isWatchPartyCall:function(a){return a.split(":")[0]==="WATCH"},isSupportedMWCall:function(a){return k.isGroupCall(a)||k.isMessengerCall(a)||k.isRoomCall(a)||k.isAlohaCall(a)||k.isWatchPartyCall(a)},getPeerID:function(a){if(k.isGroupCall(a))throw new Error("Not a P2P call: "+a);a=a.split(":");a=a.slice(1);return a[0]===b("CurrentUser").getID()?a[1]:a[0]},getMessengerCallID:function(a){if(!k.isMessengerCall(a))throw new Error("Not a Messenger call: "+a);return Number(a.split(":")[1])},getThreadID:function(a){return!k.isGroupCall(a)?null:Number(a.split(":")[1])},getSandboxingTierFromURIOrEmpty:function(a,b){b=b+"=";a=a.split(b);if(a[1]){b=a.pop().split("&").shift();return b}return""},createRequestHeader:function(a,c,d,e,f){__p&&__p();a={type:a,transactionId:b("generateRTCTransactionID")(),retryCount:0,conferenceName:c,clientSessionId:e?e:""};c={};d&&(a.serverInfoData=d);f&&(c.esc_p2p_call_id=f);if(b("RTWebClientFeatureGating").canUseMultiwaySandbox()){e=window.location.href;d=k.getSandboxingTierFromURIOrEmpty(e,"multiway_www_tier");f=k.getSandboxingTierFromURIOrEmpty(e,"multiway_core_tier");d&&(c.multiwayWwwTier=d);f&&(c.multiwayCoreTier=f)}a.extensions=c;return a},createClientContextMessage:function(a,b){a={num_participants:a,trigger:b};b={header:{topic_DEPRECATED:"client_context",shouldSendToAllUsers:!1},body:{genericMessage:{topic:"client_context",data:JSON.stringify(a)}}};return b},createResponseHeader:function(a,b,c){b={type:a.type,transactionId:a.transactionId,retryCount:0,conferenceName:a.conferenceName,responseStatusCode:b,clientSessionId:c?c:""};a.serverInfoData&&(b.serverInfoData=a.serverInfoData);return b},maybeRemoveVideoConstraint:function(a){return b("RTCMediaDevices").enumerateDevices().then(function(c){if(c.some(function(a){return a.kind==="videoinput"})){b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[maybeRemoveVideoConstraint] At least one device has videoinput.  Keeping constraints "+JSON.stringify(a)});return a}b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[maybeRemoveVideoConstraint] No devices capable of videoinput.",errorDomain:"GetUserMedia",errorType:"Removing video stream by setting video constraint to false."});return babelHelpers["extends"]({},a,{video:!1})})["catch"](function(){return b("Promise").resolve(a)})},getUserMediaWithAudioFallback:function(a,c){__p&&__p();return a.video?k.maybeRemoveVideoConstraint(a).then(function(a){return k.getUserMedia(a,c)})["catch"](function(c){__p&&__p();if(a.video){if(c.name==="NotFoundError"||c.name==="StreamFailedToStart"){var d="Audio Fallback Error Recovery: "+JSON.stringify(c)+" constraints: "+JSON.stringify(a);b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMediaWithAudioFallback] Retrying getUserMedia with no video stream",errorDomain:"GetUserMedia",errorType:d});return k.getUserMedia({video:!1,audio:a.audio})}if(c.name==="OverconstrainedError"){d="Video Constraints Error Recovery: "+JSON.stringify(c)+" constraints: "+JSON.stringify(a);b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMediaWithAudioFallback] Retrying getUserMedia with no video constraints",errorDomain:"GetUserMedia",errorType:d});return k.getUserMedia({video:!0,audio:a.audio})}}d="Error: "+JSON.stringify(c)+" constraints: "+JSON.stringify(a);b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMediaWithAudioFallback] Throwing other error",errorDomain:"GetUserMedia",errorType:d});throw c}):k.getUserMedia(a,c)},getUserMediaWithFallbackToEmptyVideoConstraints:function(a,c){return k.getUserMedia(a,c)["catch"](function(c){if(a.video&&c.name==="OverconstrainedError"){b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMediaWithFallbackToEmptyVideoConstraints] Fallback getUserMedia with no video constraints",errorDomain:"GetUserMedia",errorType:"Original Constraints: "+JSON.stringify(a)});return k.getUserMedia(babelHelpers["extends"]({},a,{video:!0}))}throw c})},getUserScreenMedia:function(a,c,d){return b("RTCScreenSharing").getUserMedia(a,c,d)},getUserMedia:function(a,c){__p&&__p();var d=navigator,e=d.mediaDevices;if(typeof a.video==="object"&&a.video.mediaSource){b("FBLogger")("rtc_www").mustfix("Please use %s instead of %s for screen","RTCUtils.getUserScreenMedia()","RTCUtils.getUserMedia()");return b("RTCScreenSharing").getUserMedia(a,"unknown")}d=c&&c.optionalConstraintsOnly&&a.video;var f=k._parseConstraints(a,{optionalConstraintsOnly:!!d}),g=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;return new(b("Promise"))(function(a,d){e&&typeof e.getUserMedia==="function"?(b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMedia] Newer version"}),a(e.getUserMedia(f).then(function(a){return k._maybeSupportFilteredStreams(a,!!(c&&c.supportFilteredStreams))}))):g?(b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMedia] Backwards compatible version"}),g.call(navigator,f,a,d)):(b("RTWebUserActionLogger").logCheckpoint({checkpoint:"[getUserMedia] Not supported"}),d("getUserMedia not supported"))})["catch"](function(a){var c=a.message,d=a.name,e=a.constraint;b("RTWebUserActionLogger").logError({errorDomain:"GetUserMedia",errorType:(d?d:"unknown GetUserMedia error")+":"+(c?" "+c:"")+(e?" "+e:"")});throw b("UserMediaRequestError").createFromNative(a)})},_parseConstraints:function(a,c){if(b("UserAgent").isBrowser("Chrome")||b("UserAgent").isBrowser("Opera")){var d=a.audio,e=a.video,f={};d!==void 0&&(f.audio=b("RTCUserMediaConstraints").chromify(d));e!==void 0&&(f.video=b("RTCUserMediaConstraints").chromify(e,c));return f}return a},_maybeSupportFilteredStreams:function(a,b){return a},getUserMediaWithValidation:function(a,c,d,e){__p&&__p();c===void 0&&(c={audio:!0,video:!0});d===void 0&&(d=5);e===void 0&&(e={audio:1e3,video:1e3});return new(b("Promise"))(function(f,g){__p&&__p();var h=function d(h){k.getUserMedia(a).then(function(d){return b("RTCMediaStreamValidator").validate(d,a,c,e).then(function(a){return f({stream:a})})["catch"](function(a){if(a.message===i||a.message===j)f({stream:d,err:a});else{k.stopMediaStream(d);throw a}})},g)["catch"](function(a){h>0?d(h-1):g(a)})};h(d)})},isFullScreen:function(){return Boolean(document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement||document.msFullscreenElement)},requestFullScreen:function(a){a===void 0&&(a=document.documentElement),typeof a.requestFullscreen==="function"?a.requestFullscreen():typeof a.msRequestFullscreen==="function"?a.msRequestFullscreen():typeof a.mozRequestFullScreen==="function"?a.mozRequestFullScreen():typeof a.webkitRequestFullscreen==="function"&&a.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)},exitFullScreen:function(){typeof document.exitFullscreen==="function"?document.exitFullscreen():typeof document.msExitFullscreen==="function"?document.msExitFullscreen():typeof document.mozCancelFullScreen==="function"?document.mozCancelFullScreen():typeof document.webkitExitFullscreen==="function"&&document.webkitExitFullscreen()},toggleFullScreen:function(){k.isFullScreen()?k.exitFullScreen():k.requestFullScreen()},endCallReasonFromHangupReason:function(a){return b("RTCEndCallReason").fromHangupReason(a).getReasonID()},endCallReasonFromDismissRequest:function(a){return b("RTCEndCallReason").fromDismissRequest(a).getReasonID()},endCallSubreasonFromDismissRequest:function(a){return b("RTCEndCallReason").subreasonFromDismissRequest(a)},endCallReasonFromResponseStatusCode:function(a){return b("RTCEndCallReason").fromResponseStatusCode(a).getReasonID()},stopMediaStream:function(a){if(!a.active&&"active"in a)return;a.getTracks().forEach(function(a){a.readyState!=="ended"&&(a.stop(),a.dispatchEvent(new Event("ended")))})},transferAudioTracks:function(a,b){__p&&__p();for(var c=b.getAudioTracks(),d=Array.isArray(c),e=0,c=d?c:c[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var f;if(d){if(e>=c.length)break;f=c[e++]}else{e=c.next();if(e.done)break;f=e.value}f=f;a.addTrack(f);b.removeTrack(f)}},payloadParticipantsToRTCUsers:function(a){return a.map(function(a){var c=a.big_image_src||a.image_src;a.fbid||g(0,1174);return new(b("RTCUser"))({FBID:a.fbid,profileUrl:new(h||(h=b("URI")))(a.href),profilePictureUrl:c,isMessengerUser:!!a.is_messenger_user,isPartiesUser:!!a.is_parties_user,userName:a.name,userShortName:a.short_name,vanity:a.vanity||""})})},getStreamVideoResolution:function(a){return new(b("Promise"))(function(c,d){var e=document.createElement("video");b("FBRTCUtils").attachMediaStream(e,a);var f=function(){e.removeEventListener("loadedmetadata",g),e.removeEventListener("error",h),b("FBRTCUtils").attachMediaStream(e,null)},g=function(){c({height:e.videoHeight,width:e.videoWidth}),f()},h=function(){d(e.error),f()};e.addEventListener("loadedmetadata",g);e.addEventListener("error",h)})},isScreenSharingSupported:function(){return b("UserAgent").isBrowser("Chrome")||this.isVCScreenSharingSupported()},isVCScreenSharingSupported:function(){return b("FBRTCConfig").isVCEndpointCall()&&b("RTCConfig").CollabWhitelistedBrowserGK},filterDevicesByKind:function(a,b){return a?a.filter(function(a){return a.kind===b}):[]},isDevicePresent:function(a,b){return a==null?!1:a.some(function(a){return a.deviceId===b})}};e.exports=k}),null);
+__d("XGroupCallSendRequestController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/groupcall/sendrequest/",{webrtc_fbtrace:{type:"Int"}})}),null);
+__d("XVideoCallAdminMessageController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/videocall/admin_msg/",{})}),null);
+__d("XGroupCallSendMessageController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/groupcall/sendmessage/",{webrtc_fbtrace:{type:"Int"}})}),null);
+__d("XCollabCallSendMessageController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/collab/sendmessage/",{recipient_id:{type:"Int",required:!0},msg_id:{type:"Int",required:!0},message_info:{type:"String",required:!0},webrtc_fbtrace:{type:"Int"}})}),null);
+__d("XVideoCallSendMessageController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/videocall/sendmessage/",{recipient_id:{type:"Int",required:!0},msg_id:{type:"Int",required:!0},message_info:{type:"String",required:!0},webrtc_fbtrace:{type:"Int"}})}),null);
+__d("XScreenSharingController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/videocall/screen_sharing/",{peer_id:{type:"FBID",required:!0},version:{type:"Int"}})}),null);
+__d("XVideoCallTurnDiscoveryController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/videocall/turndiscovery/",{version:{type:"Int",required:!0},call_id:{type:"String"}})}),null);
+__d("XGroupCallController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/groupcall/{?call_context}/",{call_context:{type:"String",required:!0},call_id:{type:"Int"},users_to_ring:{type:"FBIDSet",defaultValue:[]},has_video:{type:"Bool",defaultValue:!0},initialize_video:{type:"Bool",defaultValue:!0},server_info_data:{type:"String"},nonce:{type:"String"},multiway_www_tier:{type:"String"},multiway_core_tier:{type:"String"},locale:{type:"String"}})}),null);
+__d("XGroupCallSigningController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/groupcall/init/",{call_context:{type:"String",required:!0},call_id:{type:"Int"},users_to_ring:{type:"FBIDSet",defaultValue:[]},has_video:{type:"Bool",defaultValue:!1},initialize_video:{type:"Bool",defaultValue:!1},server_info_data:{type:"String"},nonce:{type:"String"},multiway_www_tier:{type:"String"},multiway_core_tier:{type:"String"}})}),null);
+__d("XVideoCallController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/videocall/incall/",{peer_id:{type:"FBID",required:!0},call_id:{type:"Int"},is_caller:{type:"Bool",defaultValue:!1},audio_only:{type:"Bool",defaultValue:!1},nonce:{type:"String"},meeting_id:{type:"Int"},meeting_pass:{type:"String"},initialize_video:{type:"Bool",defaultValue:!0},locale:{type:"String"}})}),null);
+__d("XWirelessScreenSharingController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/screen_sharing/{?session_id}/",{nonce:{type:"String"},peer_id:{type:"FBID",required:!0},session_id:{type:"Int"}})}),null);
+__d("XRTCCallNUXController",["XController"],(function(a,b,c,d,e,f){e.exports=b("XController").create("/rtc/call/nuxstatus/",{})}),null);
+__d("RTCGroupCallEscalationActionTypes",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({GROUP_ESCALATION_START:"GROUP_ESCALATION_START",GROUP_ESCALATION_SUCCESS:"GROUP_ESCALATION_SUCCESS",GROUP_ESCALATION_CANCEL:"GROUP_ESCALATION_CANCEL",GROUP_ESCALATION_SET_USERS_TO_RING:"GROUP_ESCALATION_SET_USERS_TO_RING",GROUP_ESCALATION_CLEAR_P2P_CONNECTION:"GROUP_ESCALATION_CLEAR_P2P_CONNECTION",GROUP_ESCALATION_SET_P2P_CALLSUMMARY:"GROUP_ESCALATION_SET_P2P_CALLSUMMARY",GROUP_ESCALATION_ADD_LOCAL_STREAM:"GROUP_ESCALATION_ADD_LOCAL_STREAM"})}),null);
+__d("RTCIceCandidate",[],(function(a,b,c,d,e,f){"use strict";e.exports=window.RTCIceCandidate||window.mozRTCIceCandidate}),null);
+__d("RTCPeerConnection",[],(function(a,b,c,d,e,f){"use strict";e.exports=window.RTCPeerConnection||window.mozRTCPeerConnection||window.webkitRTCPeerConnection}),null);
+__d("RTCScreenSharing",["Promise","CollabRTCChromeScreenSharing","RTCUserMediaConstraints","RTCUtils","UserAgent","VFDesktopHelper","WorkplaceChatHelper"],(function(a,b,c,d,e,f){"use strict";__p&&__p();var g="SCREEN_SHARING_NOT_SUPPORTED",h="UNEXPECTED_ERROR",i={SCREEN_SHARING_NOT_SUPPORTED:g,getUserMedia:function(a,c,d){__p&&__p();if(b("UserAgent").isBrowser("Chrome")){var e;b("WorkplaceChatHelper").isDesktopChatApp()?e=b("WorkplaceChatHelper").getScreenSharingSourceID():b("VFDesktopHelper").isDesktopApp()?e=b("VFDesktopHelper").getScreenSharingSourceID():e=b("CollabRTCChromeScreenSharing").getSourceID(d,c);return e.then(function(c){return b("RTCUtils").getUserMedia(b("RTCUserMediaConstraints").chromeMediaSource(a,c))}).then(function(a){__p&&__p();for(var b=a.getTracks(),c=Array.isArray(b),d=0,b=c?b:b[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var e;if(c){if(d>=b.length)break;e=b[d++]}else{d=b.next();if(d.done)break;e=d.value}e=e;e.addEventListener("ended",function(b){return window.setTimeout(function(){a.active||i.stop()})})}return a})}else if(b("RTCUtils").isVCScreenSharingSupported()&&navigator.mediaDevices&&typeof navigator.mediaDevices.getUserMedia==="function")return b("Promise").resolve(navigator.mediaDevices.getUserMedia(a)["catch"](function(a){if(a.name==="NotAllowedError")throw new Error(g)}));return b("Promise").reject(new Error(g))},stop:function(){if(b("UserAgent").isBrowser("Chrome")){if(b("WorkplaceChatHelper").isDesktopChatApp())return b("WorkplaceChatHelper").stopScreenSharing();return b("VFDesktopHelper").isDesktopApp()?b("VFDesktopHelper").stopScreenSharing():b("CollabRTCChromeScreenSharing").stop()}return b("Promise").reject(new Error(h))}};e.exports=i}),null);
+__d("RTCAudio.react",["cx","FBRTCUtils","MediaStream","React","joinClasses"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();a=b("React").PureComponent;c=function(a){__p&&__p();babelHelpers.inheritsLoose(c,a);function c(){return a.apply(this,arguments)||this}var d=c.prototype;d.render=function(){var a=this;return b("React").jsx("audio",{autoPlay:!0,className:b("joinClasses")(this.props.className,"_8md"),controls:!1,muted:this.props.muted,ref:function(b){return a.$1=b}})};d.componentDidMount=function(){this.$2(),this.$3()};d.$2=function(){__p&&__p();if(!this.$1)return;var a=this.props.mediaStream;if(a&&a.getVideoTracks().length>0){var c=new(b("MediaStream"))();for(var d=a.getAudioTracks(),e=Array.isArray(d),f=0,d=e?d:d[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var g;if(e){if(f>=d.length)break;g=d[f++]}else{f=d.next();if(f.done)break;g=f.value}g=g;c.addTrack(g)}b("FBRTCUtils").attachMediaStream(this.$1,c)}else b("FBRTCUtils").attachMediaStream(this.$1,a)};d.$3=function(){if(!this.$1)return;var a=this.props.audioSinkID;a&&this.$1.setSinkId&&this.$1.setSinkId(a)};d.componentDidUpdate=function(a){var b=a.audioSinkID;a=a.mediaStream;a!==this.props.mediaStream&&this.$2();b!==this.props.audioSinkID&&this.$3()};return c}(a);c.defaultProps={muted:!1};e.exports=c}),null);
+__d("RTCIncallAudio.react",["React","RTCAudio.react"],(function(a,b,c,d,e,f){"use strict";__p&&__p();a=b("React").PureComponent;c=function(a){__p&&__p();babelHelpers.inheritsLoose(c,a);function c(){return a.apply(this,arguments)||this}var d=c.prototype;d.render=function(){var a=this.props,c=a.audioSinkID;a.className;var d=a.mediaStream;a=babelHelpers.objectWithoutPropertiesLoose(a,["audioSinkID","className","mediaStream"]);return b("React").jsx("div",babelHelpers["extends"]({},a,{children:b("React").jsx(b("RTCAudio.react"),{audioSinkID:c,mediaStream:d})}))};return c}(a);e.exports=c}),null);
+/**
+ * Released under the MIT license. Copyright (c) 2013 Eirik Albrigtsen.
+ *
+ * @nolint
+ * @preserve-header
+ * @preserve-whitespace
+ */
+__d("sdp-transform-grammar",[],(function $module_sdp_transform_grammar(global,require,requireDynamic,requireLazy,module,exports){
+
+var grammar = module.exports = {
+  v: [{
+    name: 'version',
+    reg: /^(\d*)$/
+  }],
+  o: [{ //o=- 20518 0 IN IP4 203.0.113.1
+    // NB: sessionId will be a String in most cases because it is huge
+    name: 'origin',
+    reg: /^(\S*) (\d*) (\d*) (\S*) IP(\d) (\S*)/,
+    names: ['username', 'sessionId', 'sessionVersion', 'netType', 'ipVer', 'address'],
+    format: '%s %s %d %s IP%d %s'
+  }],
+  // default parsing of these only (though some of these feel outdated)
+  s: [{ name: 'name' }],
+  i: [{ name: 'description' }],
+  u: [{ name: 'uri' }],
+  e: [{ name: 'email' }],
+  p: [{ name: 'phone' }],
+  z: [{ name: 'timezones' }], // TODO: this one can actually be parsed properly..
+  r: [{ name: 'repeats' }],   // TODO: this one can also be parsed properly
+  //k: [{}], // outdated thing ignored
+  t: [{ //t=0 0
+    name: 'timing',
+    reg: /^(\d*) (\d*)/,
+    names: ['start', 'stop'],
+    format: '%d %d'
+  }],
+  c: [{ //c=IN IP4 10.47.197.26
+    name: 'connection',
+    reg: /^IN IP(\d) (\S*)/,
+    names: ['version', 'ip'],
+    format: 'IN IP%d %s'
+  }],
+  b: [{ //b=AS:4000
+    push: 'bandwidth',
+    reg: /^(TIAS|AS|CT|RR|RS):(\d*)/,
+    names: ['type', 'limit'],
+    format: '%s:%s'
+  }],
+  m: [{ //m=video 51744 RTP/AVP 126 97 98 34 31
+    // NB: special - pushes to session
+    // TODO: rtp/fmtp should be filtered by the payloads found here?
+    reg: /^(\w*) (\d*) ([\w\/]*)(?: (.*))?/,
+    names: ['type', 'port', 'protocol', 'payloads'],
+    format: '%s %d %s %s'
+  }],
+  a: [
+    { //a=rtpmap:110 opus/48000/2
+      push: 'rtp',
+      reg: /^rtpmap:(\d*) ([\w\-\.]*)(?:\s*\/(\d*)(?:\s*\/(\S*))?)?/,
+      names: ['payload', 'codec', 'rate', 'encoding'],
+      format: function (o) {
+        return (o.encoding) ?
+          'rtpmap:%d %s/%s/%s':
+          o.rate ?
+          'rtpmap:%d %s/%s':
+          'rtpmap:%d %s';
+      }
+    },
+    { //a=fmtp:108 profile-level-id=24;object=23;bitrate=64000
+      //a=fmtp:111 minptime=10; useinbandfec=1
+      push: 'fmtp',
+      reg: /^fmtp:(\d*) ([\S| ]*)/,
+      names: ['payload', 'config'],
+      format: 'fmtp:%d %s'
+    },
+    { //a=control:streamid=0
+      name: 'control',
+      reg: /^control:(.*)/,
+      format: 'control:%s'
+    },
+    { //a=rtcp:65179 IN IP4 193.84.77.194
+      name: 'rtcp',
+      reg: /^rtcp:(\d*)(?: (\S*) IP(\d) (\S*))?/,
+      names: ['port', 'netType', 'ipVer', 'address'],
+      format: function (o) {
+        return (o.address != null) ?
+          'rtcp:%d %s IP%d %s':
+          'rtcp:%d';
+      }
+    },
+    { //a=rtcp-fb:98 trr-int 100
+      push: 'rtcpFbTrrInt',
+      reg: /^rtcp-fb:(\*|\d*) trr-int (\d*)/,
+      names: ['payload', 'value'],
+      format: 'rtcp-fb:%d trr-int %d'
+    },
+    { //a=rtcp-fb:98 nack rpsi
+      push: 'rtcpFb',
+      reg: /^rtcp-fb:(\*|\d*) ([\w-_]*)(?: ([\w-_]*))?/,
+      names: ['payload', 'type', 'subtype'],
+      format: function (o) {
+        return (o.subtype != null) ?
+          'rtcp-fb:%s %s %s':
+          'rtcp-fb:%s %s';
+      }
+    },
+    { //a=extmap:2 urn:ietf:params:rtp-hdrext:toffset
+      //a=extmap:1/recvonly URI-gps-string
+      push: 'ext',
+      reg: /^extmap:(\d+)(?:\/(\w+))? (\S*)(?: (\S*))?/,
+      names: ['value', 'direction', 'uri', 'config'],
+      format: function (o) {
+        return 'extmap:%d' + (o.direction ? '/%s' : '%v') + ' %s' + (o.config ? ' %s' : '');
+      }
+    },
+    { //a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:32
+      push: 'crypto',
+      reg: /^crypto:(\d*) ([\w_]*) (\S*)(?: (\S*))?/,
+      names: ['id', 'suite', 'config', 'sessionConfig'],
+      format: function (o) {
+        return (o.sessionConfig != null) ?
+          'crypto:%d %s %s %s':
+          'crypto:%d %s %s';
+      }
+    },
+    { //a=setup:actpass
+      name: 'setup',
+      reg: /^setup:(\w*)/,
+      format: 'setup:%s'
+    },
+    { //a=mid:1
+      name: 'mid',
+      reg: /^mid:([^\s]*)/,
+      format: 'mid:%s'
+    },
+    { //a=msid:0c8b064d-d807-43b4-b434-f92a889d8587 98178685-d409-46e0-8e16-7ef0db0db64a
+      name: 'msid',
+      reg: /^msid:(.*)/,
+      format: 'msid:%s'
+    },
+    { //a=ptime:20
+      name: 'ptime',
+      reg: /^ptime:(\d*)/,
+      format: 'ptime:%d'
+    },
+    { //a=maxptime:60
+      name: 'maxptime',
+      reg: /^maxptime:(\d*)/,
+      format: 'maxptime:%d'
+    },
+    { //a=sendrecv
+      name: 'direction',
+      reg: /^(sendrecv|recvonly|sendonly|inactive)/
+    },
+    { //a=ice-lite
+      name: 'icelite',
+      reg: /^(ice-lite)/
+    },
+    { //a=ice-ufrag:F7gI
+      name: 'iceUfrag',
+      reg: /^ice-ufrag:(\S*)/,
+      format: 'ice-ufrag:%s'
+    },
+    { //a=ice-pwd:x9cml/YzichV2+XlhiMu8g
+      name: 'icePwd',
+      reg: /^ice-pwd:(\S*)/,
+      format: 'ice-pwd:%s'
+    },
+    { //a=fingerprint:SHA-1 00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33
+      name: 'fingerprint',
+      reg: /^fingerprint:(\S*) (\S*)/,
+      names: ['type', 'hash'],
+      format: 'fingerprint:%s %s'
+    },
+    { //a=candidate:0 1 UDP 2113667327 203.0.113.1 54400 typ host
+      //a=candidate:1162875081 1 udp 2113937151 192.168.34.75 60017 typ host generation 0 network-id 3 network-cost 10
+      //a=candidate:3289912957 2 udp 1845501695 193.84.77.194 60017 typ srflx raddr 192.168.34.75 rport 60017 generation 0 network-id 3 network-cost 10
+      //a=candidate:229815620 1 tcp 1518280447 192.168.150.19 60017 typ host tcptype active generation 0 network-id 3 network-cost 10
+      //a=candidate:3289912957 2 tcp 1845501695 193.84.77.194 60017 typ srflx raddr 192.168.34.75 rport 60017 tcptype passive generation 0 network-id 3 network-cost 10
+      push:'candidates',
+      reg: /^candidate:(\S*) (\d*) (\S*) (\d*) (\S*) (\d*) typ (\S*)(?: raddr (\S*) rport (\d*))?(?: tcptype (\S*))?(?: generation (\d*))?(?: network-id (\d*))?(?: network-cost (\d*))?/,
+      names: ['foundation', 'component', 'transport', 'priority', 'ip', 'port', 'type', 'raddr', 'rport', 'tcptype', 'generation', 'network-id', 'network-cost'],
+      format: function (o) {
+        var str = 'candidate:%s %d %s %d %s %d typ %s';
+
+        str += (o.raddr != null) ? ' raddr %s rport %d' : '%v%v';
+
+        // NB: candidate has three optional chunks, so %void middles one if it's missing
+        str += (o.tcptype != null) ? ' tcptype %s' : '%v';
+
+        if (o.generation != null) {
+          str += ' generation %d';
+        }
+
+        str += (o['network-id'] != null) ? ' network-id %d' : '%v';
+        str += (o['network-cost'] != null) ? ' network-cost %d' : '%v';
+        return str;
+      }
+    },
+    { //a=end-of-candidates (keep after the candidates line for readability)
+      name: 'endOfCandidates',
+      reg: /^(end-of-candidates)/
+    },
+    { //a=remote-candidates:1 203.0.113.1 54400 2 203.0.113.1 54401 ...
+      name: 'remoteCandidates',
+      reg: /^remote-candidates:(.*)/,
+      format: 'remote-candidates:%s'
+    },
+    { //a=ice-options:google-ice
+      name: 'iceOptions',
+      reg: /^ice-options:(\S*)/,
+      format: 'ice-options:%s'
+    },
+    { //a=ssrc:2566107569 cname:t9YU8M1UxTF8Y1A1
+      push: 'ssrcs',
+      reg: /^ssrc:(\d*) ([\w_]*)(?::(.*))?/,
+      names: ['id', 'attribute', 'value'],
+      format: function (o) {
+        var str = 'ssrc:%d';
+        if (o.attribute != null) {
+          str += ' %s';
+          if (o.value != null) {
+            str += ':%s';
+          }
+        }
+        return str;
+      }
+    },
+    { //a=ssrc-group:FEC 1 2
+      //a=ssrc-group:FEC-FR 3004364195 1080772241
+      push: 'ssrcGroups',
+      // token-char = %x21 / %x23-27 / %x2A-2B / %x2D-2E / %x30-39 / %x41-5A / %x5E-7E
+      reg: /^ssrc-group:([\x21\x23\x24\x25\x26\x27\x2A\x2B\x2D\x2E\w]*) (.*)/,
+      names: ['semantics', 'ssrcs'],
+      format: 'ssrc-group:%s %s'
+    },
+    { //a=msid-semantic: WMS Jvlam5X3SX1OP6pn20zWogvaKJz5Hjf9OnlV
+      name: 'msidSemantic',
+      reg: /^msid-semantic:\s?(\w*) (\S*)/,
+      names: ['semantic', 'token'],
+      format: 'msid-semantic: %s %s' // space after ':' is not accidental
+    },
+    { //a=group:BUNDLE audio video
+      push: 'groups',
+      reg: /^group:(\w*) (.*)/,
+      names: ['type', 'mids'],
+      format: 'group:%s %s'
+    },
+    { //a=rtcp-mux
+      name: 'rtcpMux',
+      reg: /^(rtcp-mux)/
+    },
+    { //a=rtcp-rsize
+      name: 'rtcpRsize',
+      reg: /^(rtcp-rsize)/
+    },
+    { //a=sctpmap:5000 webrtc-datachannel 1024
+      name: 'sctpmap',
+      reg: /^sctpmap:([\w_\/]*) (\S*)(?: (\S*))?/,
+      names: ['sctpmapNumber', 'app', 'maxMessageSize'],
+      format: function (o) {
+        return (o.maxMessageSize != null) ?
+          'sctpmap:%s %s %s' :
+          'sctpmap:%s %s';
+      }
+    },
+    { //a=x-google-flag:conference
+      name: 'xGoogleFlag',
+      reg: /^x-google-flag:([^\s]*)/,
+      format: 'x-google-flag:%s'
+    },
+    { //a=rid:1 send max-width=1280;max-height=720;max-fps=30;depend=0
+      push: 'rids',
+      reg: /^rid:([\d\w]+) (\w+)(?: ([\S| ]*))?/,
+      names: ['id', 'direction', 'params'],
+      format: function (o) {
+        return (o.params) ? 'rid:%s %s %s' : 'rid:%s %s';
+      }
+    },
+    { //a=imageattr:97 send [x=800,y=640,sar=1.1,q=0.6] [x=480,y=320] recv [x=330,y=250]
+      //a=imageattr:* send [x=800,y=640] recv *
+      //a=imageattr:100 recv [x=320,y=240]
+      push: 'imageattrs',
+      reg: new RegExp(
+        //a=imageattr:97
+        '^imageattr:(\\d+|\\*)' +
+        //send [x=800,y=640,sar=1.1,q=0.6] [x=480,y=320]
+        '[\\s\\t]+(send|recv)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*)' +
+        //recv [x=330,y=250]
+        '(?:[\\s\\t]+(recv|send)[\\s\\t]+(\\*|\\[\\S+\\](?:[\\s\\t]+\\[\\S+\\])*))?'
+      ),
+      names: ['pt', 'dir1', 'attrs1', 'dir2', 'attrs2'],
+      format: function (o) {
+        return 'imageattr:%s %s %s' + (o.dir2 ? ' %s %s' : '');
+      }
+    },
+    { //a=simulcast:send 1,2,3;~4,~5 recv 6;~7,~8
+      //a=simulcast:recv 1;4,5 send 6;7
+      name: 'simulcast',
+      reg: new RegExp(
+        //a=simulcast:
+        '^simulcast:' +
+        //send 1,2,3;~4,~5
+        '(send|recv) ([a-zA-Z0-9\\-_~;,]+)' +
+        //space + recv 6;~7,~8
+        '(?:\\s?(send|recv) ([a-zA-Z0-9\\-_~;,]+))?' +
+        //end
+        '$'
+      ),
+      names: ['dir1', 'list1', 'dir2', 'list2'],
+      format: function (o) {
+        return 'simulcast:%s %s' + (o.dir2 ? ' %s %s' : '');
+      }
+    },
+    { //Old simulcast draft 03 (implemented by Firefox)
+      //  https://tools.ietf.org/html/draft-ietf-mmusic-sdp-simulcast-03
+      //a=simulcast: recv pt=97;98 send pt=97
+      //a=simulcast: send rid=5;6;7 paused=6,7
+      name: 'simulcast_03',
+      reg: /^simulcast:[\s\t]+([\S+\s\t]+)$/,
+      names: ['value'],
+      format: 'simulcast: %s'
+    },
+    {
+      //a=framerate:25
+      //a=framerate:29.97
+      name: 'framerate',
+      reg: /^framerate:(\d+(?:$|\.\d+))/,
+      format: 'framerate:%s'
+    },
+    { // any a= that we don't understand is kepts verbatim on media.invalid
+      push: 'invalid',
+      names: ['value']
+    }
+  ]
+};
+
+// set sensible defaults to avoid polluting the grammar with boring details
+Object.keys(grammar).forEach(function (key) {
+  var objs = grammar[key];
+  objs.forEach(function (obj) {
+    if (!obj.reg) {
+      obj.reg = /(.*)/;
+    }
+    if (!obj.format) {
+      obj.format = '%s';
+    }
+  });
+});
+
+/*  */}),null);
+/**
+ * Released under the MIT license. Copyright (c) 2013 Eirik Albrigtsen.
+ *
+ * @nolint
+ * @preserve-header
+ * @preserve-whitespace
+ */
+__d("sdp-transform-parser",["sdp-transform-grammar"],(function $module_sdp_transform_parser(global,require,requireDynamic,requireLazy,module,exports){
+
+var toIntIfInt = function (v) {
+  return String(Number(v)) === v ? Number(v) : v;
+};
+
+var attachProperties = function (match, location, names, rawName) {
+  if (rawName && !names) {
+    location[rawName] = toIntIfInt(match[1]);
+  }
+  else {
+    for (var i = 0; i < names.length; i += 1) {
+      if (match[i+1] != null) {
+        location[names[i]] = toIntIfInt(match[i+1]);
+      }
+    }
+  }
+};
+
+var parseReg = function (obj, location, content) {
+  var needsBlank = obj.name && obj.names;
+  if (obj.push && !location[obj.push]) {
+    location[obj.push] = [];
+  }
+  else if (needsBlank && !location[obj.name]) {
+    location[obj.name] = {};
+  }
+  var keyLocation = obj.push ?
+    {} :  // blank object that will be pushed
+    needsBlank ? location[obj.name] : location; // otherwise, named location or root
+
+  attachProperties(content.match(obj.reg), keyLocation, obj.names, obj.name);
+
+  if (obj.push) {
+    location[obj.push].push(keyLocation);
+  }
+};
+
+var grammar = require('sdp-transform-grammar');
+var validLine = RegExp.prototype.test.bind(/^([a-z])=(.*)/);
+
+exports.parse = function (sdp) {
+  var session = {}
+    , media = []
+    , location = session; // points at where properties go under (one of the above)
+
+  // parse lines we understand
+  sdp.split(/(\r\n|\r|\n)/).filter(validLine).forEach(function (l) {
+    var type = l[0];
+    var content = l.slice(2);
+    if (type === 'm') {
+      media.push({rtp: [], fmtp: []});
+      location = media[media.length-1]; // point at latest media line
+    }
+
+    for (var j = 0; j < (grammar[type] || []).length; j += 1) {
+      var obj = grammar[type][j];
+      if (obj.reg.test(content)) {
+        return parseReg(obj, location, content);
+      }
+    }
+  });
+
+  session.media = media; // link it up
+  return session;
+};
+
+var paramReducer = function (acc, expr) {
+  var s = expr.split(/=(.+)/, 2);
+  if (s.length === 2) {
+    acc[s[0]] = toIntIfInt(s[1]);
+  }
+  return acc;
+};
+
+exports.parseParams = function (str) {
+  return str.split(/\;\s?/).reduce(paramReducer, {});
+};
+
+// For backward compatibility - alias will be removed in 3.0.0
+exports.parseFmtpConfig = exports.parseParams;
+
+exports.parsePayloads = function (str) {
+  return str.split(' ').map(Number);
+};
+
+exports.parseRemoteCandidates = function (str) {
+  var candidates = [];
+  var parts = str.split(' ').map(toIntIfInt);
+  for (var i = 0; i < parts.length; i += 3) {
+    candidates.push({
+      component: parts[i],
+      ip: parts[i + 1],
+      port: parts[i + 2]
+    });
+  }
+  return candidates;
+};
+
+exports.parseImageAttributes = function (str) {
+  return str.split(' ').map(function (item) {
+    return item.substring(1, item.length-1).split(',').reduce(paramReducer, {});
+  });
+};
+
+exports.parseSimulcastStreamList = function (str) {
+  return str.split(';').map(function (stream) {
+    return stream.split(',').map(function (format) {
+      var scid, paused = false;
+
+      if (format[0] !== '~') {
+        scid = toIntIfInt(format);
+      } else {
+        scid = toIntIfInt(format.substring(1, format.length));
+        paused = true;
+      }
+
+      return {
+        scid: scid,
+        paused: paused
+      };
+    });
+  });
+};
+
+/*  */}),null);
+/**
+ * Released under the MIT license. Copyright (c) 2013 Eirik Albrigtsen.
+ *
+ * @nolint
+ * @preserve-header
+ * @preserve-whitespace
+ */
+__d("sdp-transform-writer",["sdp-transform-grammar"],(function $module_sdp_transform_writer(global,require,requireDynamic,requireLazy,module,exports){
+
+var grammar = require('sdp-transform-grammar');
+
+// customized util.format - discards excess arguments and can void middle ones
+var formatRegExp = /%[sdv%]/g;
+var format = function (formatStr) {
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  return formatStr.replace(formatRegExp, function (x) {
+    if (i >= len) {
+      return x; // missing argument
+    }
+    var arg = args[i];
+    i += 1;
+    switch (x) {
+    case '%%':
+      return '%';
+    case '%s':
+      return String(arg);
+    case '%d':
+      return Number(arg);
+    case '%v':
+      return '';
+    }
+  });
+  // NB: we discard excess arguments - they are typically undefined from makeLine
+};
+
+var makeLine = function (type, obj, location) {
+  var str = obj.format instanceof Function ?
+    (obj.format(obj.push ? location : location[obj.name])) :
+    obj.format;
+
+  var args = [type + '=' + str];
+  if (obj.names) {
+    for (var i = 0; i < obj.names.length; i += 1) {
+      var n = obj.names[i];
+      if (obj.name) {
+        args.push(location[obj.name][n]);
+      }
+      else { // for mLine and push attributes
+        args.push(location[obj.names[i]]);
+      }
+    }
+  }
+  else {
+    args.push(location[obj.name]);
+  }
+  return format.apply(null, args);
+};
+
+// RFC specified order
+// TODO: extend this with all the rest
+var defaultOuterOrder = [
+  'v', 'o', 's', 'i',
+  'u', 'e', 'p', 'c',
+  'b', 't', 'r', 'z', 'a'
+];
+var defaultInnerOrder = ['i', 'c', 'b', 'a'];
+
+
+module.exports = function (session, opts) {
+  opts = opts || {};
+  // ensure certain properties exist
+  if (session.version == null) {
+    session.version = 0; // 'v=0' must be there (only defined version atm)
+  }
+  if (session.name == null) {
+    session.name = ' '; // 's= ' must be there if no meaningful name set
+  }
+  session.media.forEach(function (mLine) {
+    if (mLine.payloads == null) {
+      mLine.payloads = '';
+    }
+  });
+
+  var outerOrder = opts.outerOrder || defaultOuterOrder;
+  var innerOrder = opts.innerOrder || defaultInnerOrder;
+  var sdp = [];
+
+  // loop through outerOrder for matching properties on session
+  outerOrder.forEach(function (type) {
+    grammar[type].forEach(function (obj) {
+      if (obj.name in session && session[obj.name] != null) {
+        sdp.push(makeLine(type, obj, session));
+      }
+      else if (obj.push in session && session[obj.push] != null) {
+        session[obj.push].forEach(function (el) {
+          sdp.push(makeLine(type, obj, el));
+        });
+      }
+    });
+  });
+
+  // then for each media line, follow the innerOrder
+  session.media.forEach(function (mLine) {
+    sdp.push(makeLine('m', grammar.m[0], mLine));
+
+    innerOrder.forEach(function (type) {
+      grammar[type].forEach(function (obj) {
+        if (obj.name in mLine && mLine[obj.name] != null) {
+          sdp.push(makeLine(type, obj, mLine));
+        }
+        else if (obj.push in mLine && mLine[obj.push] != null) {
+          mLine[obj.push].forEach(function (el) {
+            sdp.push(makeLine(type, obj, el));
+          });
+        }
+      });
+    });
+  });
+
+  return sdp.join('\r\n') + '\r\n';
+};
+
+/*  */}),null);
+/**
+ * Released under the MIT license. Copyright (c) 2013 Eirik Albrigtsen.
+ *
+ * @nolint
+ * @preserve-header
+ * @preserve-whitespace
+ */
+__d("sdp-transform",["sdp-transform-parser","sdp-transform-writer"],(function $module_sdp_transform(global,require,requireDynamic,requireLazy,module,exports){
+
+var parser = require('sdp-transform-parser');
+var writer = require('sdp-transform-writer');
+
+exports.write = writer;
+exports.parse = parser.parse;
+exports.parseFmtpConfig = parser.parseFmtpConfig;
+exports.parseParams = parser.parseParams;
+exports.parsePayloads = parser.parsePayloads;
+exports.parseRemoteCandidates = parser.parseRemoteCandidates;
+exports.parseImageAttributes = parser.parseImageAttributes;
+exports.parseSimulcastStreamList = parser.parseSimulcastStreamList;
+
+/*  */}),null);
+/**
+ * Copyright @ 2015 Atlassian Pty Ltd
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @nolint
+ * @preserve-header
+ * @preserve-whitespace
+ */
+__d("sdp-interop-transform",["sdp-transform"],(function $module_sdp_interop_transform(global,require,requireDynamic,requireLazy,module,exports){
+
+const transform = require('sdp-transform');
+
+exports.write = function(session, opts) {
+
+  if (typeof session !== 'undefined' &&
+      typeof session.media !== 'undefined' &&
+      Array.isArray(session.media)) {
+
+    session.media.forEach(function (mLine) {
+      // expand sources to ssrcs
+      if (typeof mLine.sources !== 'undefined' &&
+        Object.keys(mLine.sources).length !== 0) {
+          mLine.ssrcs = [];
+          Object.keys(mLine.sources).forEach(function (ssrc) {
+            const source = mLine.sources[ssrc];
+            Object.keys(source).forEach(function (attribute) {
+              mLine.ssrcs.push({
+                id: ssrc,
+                attribute: attribute,
+                value: source[attribute]
+              });
+            });
+          });
+          delete mLine.sources;
+        }
+
+      // join ssrcs in ssrc groups
+      if (typeof mLine.ssrcGroups !== 'undefined' &&
+        Array.isArray(mLine.ssrcGroups)) {
+          mLine.ssrcGroups.forEach(function (ssrcGroup) {
+            if (typeof ssrcGroup.ssrcs !== 'undefined' &&
+                Array.isArray(ssrcGroup.ssrcs)) {
+              ssrcGroup.ssrcs = ssrcGroup.ssrcs.join(' ');
+            }
+          });
+        }
+    });
+  }
+
+  // join group mids
+  if (typeof session !== 'undefined' &&
+      typeof session.groups !== 'undefined' && Array.isArray(session.groups)) {
+
+    session.groups.forEach(function (g) {
+      if (typeof g.mids !== 'undefined' && Array.isArray(g.mids)) {
+        g.mids = g.mids.join(' ');
+      }
+    });
+  }
+
+  return transform.write(session, opts);
+};
+
+exports.parse = function(sdp) {
+  const session = transform.parse(sdp);
+
+  if (typeof session !== 'undefined' && typeof session.media !== 'undefined' &&
+      Array.isArray(session.media)) {
+
+    session.media.forEach(function (mLine) {
+      // group sources attributes by ssrc
+      if (typeof mLine.ssrcs !== 'undefined' && Array.isArray(mLine.ssrcs)) {
+        mLine.sources = {};
+        mLine.ssrcs.forEach(function (ssrc) {
+          if (!mLine.sources[ssrc.id])
+          mLine.sources[ssrc.id] = {};
+        mLine.sources[ssrc.id][ssrc.attribute] = ssrc.value;
+        });
+
+        delete mLine.ssrcs;
+      }
+
+      // split ssrcs in ssrc groups
+      if (typeof mLine.ssrcGroups !== 'undefined' &&
+        Array.isArray(mLine.ssrcGroups)) {
+          mLine.ssrcGroups.forEach(function (ssrcGroup) {
+            if (typeof ssrcGroup.ssrcs === 'string') {
+              ssrcGroup.ssrcs = ssrcGroup.ssrcs.split(' ');
+            }
+          });
+        }
+    });
+  }
+  // split group mids
+  if (typeof session !== 'undefined' &&
+      typeof session.groups !== 'undefined' && Array.isArray(session.groups)) {
+
+    session.groups.forEach(function (g) {
+      if (typeof g.mids === 'string') {
+        g.mids = g.mids.split(' ');
+      }
+    });
+  }
+
+  return session;
+};
+
+/*  */}),null);
+__d("RTCCallActionTypes",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({CALL:"CALL",CALL_SUCCESS:"CALL_SUCCESS",CALL_ERROR:"CALL_ERROR",INCOMING_CALL_SUCCESS:"INCOMING_CALL_SUCCESS",INIT:"INIT",RESET:"RESET",RESET_FOR_REDIAL:"RESET_FOR_REDIAL",CALL_COLLISION:"CALL_COLLISION",WAIT_FOR_USER_INPUT:"WAIT_FOR_USER_INPUT",SET_CALL_SUMMARY:"SET_CALL_SUMMARY",SET_MW_CALL_TYPE:"SET_MW_CALL_TYPE",SET_LAYOUT:"SET_LAYOUT",SET_LINKHASH:"SET_LINKHASH",SET_DOMINANT_SPEAKER:"SET_DOMINANT_SPEAKER",SET_PINNED_SPEAKER:"SET_PINNED_SPEAKER",SET_USE_DOMINANT_SPEAKE_VIEW:"SET_USE_DOMINANT_SPEAKE_VIEW",SET_GRID_VIEW:"SET_GRID_VIEW",SET_STRIP_VIEW:"SET_STRIP_VIEW",INIT_THREAD:"INIT_THREAD",ON_PARTICIPANT_LEFT:"ON_PARTICIPANT_LEFT",ON_PARTICIPANTS_ADDED:"ON_PARTICIPANTS_ADDED",ADD_PARTICIPANTS_TO_RING:"ADD_PARTICIPANTS_TO_RING",JOIN:"JOIN",JOIN_SUCCESS:"JOIN_SUCCESS",JOIN_ERROR:"JOIN_ERROR",HANGUP:"HANGUP",HANGUP_SUCCESS:"HANGUP_SUCCESS",HANGUP_ERROR:"HANGUP_ERROR",ON_CONFERENCE_STATE:"ON_CONFERENCE_STATE",DISMISS:"DISMISS",END_CALL:"END_CALL",ON_JOIN_REQUEST_SENT:"ON_JOIN_REQUEST_SENT",ON_JOIN_RESPONSE:"ON_JOIN_RESPONSE",ON_RECEIVED_JOIN_RESPONSE:"ON_RECEIVED_JOIN_RESPONSE",ON_PROCESSED_JOIN_RESPONSE:"ON_PROCESSED_JOIN_RESPONSE",ON_SERVER_MEDIA_UPDATE_SUCCESS:"ON_SERVER_MEDIA_UPDATE_SUCCESS",ON_CLIENT_MEDIA_UPDATE_RESPONSE:"ON_CLIENT_MEDIA_UPDATE_RESPONSE",SET_LOCAL_CLIENT_VERSION:"SET_LOCAL_CLIENT_VERSION",INIT_LOCAL_USER:"INIT_LOCAL_USER",INIT_REMOTE_USERS:"INIT_REMOTE_USERS",UPDATE_REMOTE_USERS:"UPDATE_REMOTE_USERS",ADD_REMOTE_STREAM:"ADD_REMOTE_STREAM",REMOVE_REMOTE_STREAM:"REMOVE_REMOTE_STREAM",REMOVE_ALL_REMOTE_STREAMS:"REMOVE_ALL_REMOTE_STREAMS",ADD_REMOTE_TRACK:"ADD_REMOTE_TRACK",REMOVE_REMOTE_TRACK:"REMOVE_REMOTE_TRACK",AUDIO_MUTED:"AUDIO_MUTED",AUDIO_UNMUTED:"AUDIO_UNMUTED",VIDEO_MUTED:"VIDEO_MUTED",VIDEO_UNMUTED:"VIDEO_UNMUTED",REMOTE_AUDIO_MUTED:"REMOTE_AUDIO_MUTED",REMOTE_AUDIO_UNMUTED:"REMOTE_AUDIO_UNMUTED",REMOTE_VIDEO_MUTED:"REMOTE_VIDEO_MUTED",REMOTE_VIDEO_UNMUTED:"REMOTE_VIDEO_UNMUTED",SELF_VIEW_COLLAPSED:"SELF_VIEW_COLLAPSED",SELF_VIEW_UNCOLLAPSED:"SELF_VIEW_UNCOLLAPSED",ADD_LOCAL_STREAM:"ADD_LOCAL_STREAM",REMOVE_LOCAL_STREAM:"REMOVE_LOCAL_STREAM",REPLACE_LOCAL_STREAM:"REPLACE_LOCAL_STREAM",REMOVE_ALL_LOCAL_STREAMS:"REMOVE_ALL_LOCAL_STREAMS",STOP_LOCAL_STREAM:"STOP_LOCAL_STREAM",ADD_LOCAL_SCREEN_STREAM:"ADD_LOCAL_SCREEN_STREAM",REMOVE_LOCAL_SCREEN_STREAM:"REMOVE_LOCAL_SCREEN_STREAM",REMOVE_ALL_LOCAL_SCREEN_STREAMS:"REMOVE_ALL_LOCAL_SCREEN_STREAMS",REPLACE_LOCAL_SCREEN_STREAM:"REPLACE_LOCAL_SCREEN_STREAM",ADD_REMOTE_SCREEN_STREAM:"ADD_REMOTE_SCREEN_STREAM",REMOVE_REMOTE_SCREEN_STREAM:"REMOVE_REMOTE_SCREEN_STREAM",TOGGLE_REMOTE_STREAM:"TOGGLE_REMOTE_STREAM",SUBMIT_RATING:"SUBMIT_RATING",SUBMIT_FEEDBACK:"SUBMIT_FEEDBACK",SUBMIT_FEEDBACK_OPTIONS:"SUBMIT_FEEDBACK_OPTIONS",SUBMIT_SURVEY_CHOICE:"SUBMIT_SURVEY_CHOICE",RATING_SHOWN:"RATING_SHOWN",FEEDBACK_SHOWN:"FEEDBACK_SHOWN",SET_CONFERENCE_STATE:"SET_CONFERENCE_STATE",SET_END_CALL_REASON:"SET_END_CALL_REASON",FLOOR_STATUS:"FLOOR_STATUS"})}),null);

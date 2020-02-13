@@ -1,5 +1,8 @@
 import React from "react";
-import {Container} from 'reactstrap';
+import {Col, 
+  Row,
+  Container
+} from 'reactstrap';
 import LandingPageHeader from "../../components/Headers/LandingPageHeader";
 import Style from "./Fiction.module.scss";
 import IndexNavbar from "../../components/Navbars/IndexNavbar"
@@ -21,34 +24,30 @@ const Fiction =() => {
 
 return (
 
-
 <div className={Style.background}>
-  <Nav/>
-  <Head/> 
+  <Nav/><Head/>
   <div className={Style.wrap}>
     <Container>
 
 
-      <div className={Style.box}> 
+      <div className={Style.sbox}> <Col>
       <img src={Read} className={Style.border}/>
-        <News/>
-
-
+        <News/></Col>
     </div>
   </Container>
 
   </div>
+
 
     <div className={Style.centre}> 
       <i class="fas fa-road"/>
   </div>
 
   {/*<Paper className={Style.box}/>*/}
-  <Tab/> 
+  <container className={Style.min}>
+  <Tab/>
   <Sectab/>
-
-
-</div>  
+</container> </div>
 );
 
 };

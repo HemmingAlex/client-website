@@ -30,6 +30,9 @@ import Fh4 from "../../assets/img/assets/Book4.jpg";
 function LitTab() {
   const [iconPills, setIconPills] = React.useState("1");
   const [pills, setPills] = React.useState("1");
+
+  const isMobile = window.innerWidth <= 500;
+
   return (
     <>
       <div>
@@ -120,7 +123,7 @@ function LitTab() {
                    
                     <TabPane tabId="iconPills1">
                       
-                      <div className={Style.box}>
+                      <div className={Style.fbox}>
                       <container>
 
                     <img src={Fh3} className={Style.border}/>
@@ -151,7 +154,7 @@ Warning contains gore with extreme violence;
 
                     </TabPane>
                     <TabPane tabId="iconPills2">
-                      <div className={Style.box}>
+                      <div className={Style.fbox}>
 
                         <container><img src={FH2} className={Style.border}/></container>
                      
@@ -179,7 +182,7 @@ and excitement awaits. Gryff now calls Vin home.
          </container>         </div>
                     </TabPane>
                     <TabPane tabId="iconPills3">
-                    <div className={Style.box}>
+                    <div className={Style.fbox}>
 
 <container><img src={FH3} className={Style.border}/></container>
 
@@ -206,7 +209,7 @@ Adventure with Gryff as he strives to save Vin and the Universe!
                     {/* start of edit*/} 
 
                     <TabPane tabId="iconPills4">
-                    <div className={Style.box}>
+                    <div className={Style.fbox}>
 
 <container><img src={Fh4} className={Style.border}/></container>
 
@@ -239,7 +242,7 @@ Gryff adventures in the Gaming Verse on his quest to return home.
 
                     <TabPane tabId="iconPills5">
 
-<div className={Style.box}>
+<div className={Style.fbox}>
 <container>       
 <img src={GOP1} className={Style.border}/>
 

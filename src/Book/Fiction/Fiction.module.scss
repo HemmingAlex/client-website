@@ -1,5 +1,5 @@
 .body {
-    font-size: 12px;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif; 
     text-align:left;
     font-weight: bold;
@@ -12,17 +12,36 @@
 
 .box {
     display:flex;
-    box-shadow: 0pc 0px 10px 5px darkgray   ;
+    box-shadow: 0pc 0px 10px 5px darkgray;
+    background: content-box white;
+
+}
+
+.fbox {
+    display:block;
+    box-shadow: 0pc 0px 10px 5px darkgray;
     background: content-box white;}
+
+    .min{
+        width:60%;
+   
+    }
     
 
+.sbox {
+    display:flex;
+    box-shadow: 0pc 0px 10px 5px darkgray;
+    background: content-box white;
+    transform:scale(0.83);
+
+}
 .background {
 
     background-image: url(../../assets/img/assets/MapS.jpg) !important;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;    
-    display:block;
+    background-size: cover;
 }
 
 .centre {
@@ -39,6 +58,11 @@ position:relative;
 text-align: center;
 
 }
+.Dark {
+    background-color: darkslategray !important;
+    height: 550px;
+}
+
 
 .header {
 
@@ -64,12 +88,15 @@ box-shadow: darkgoldenrod;
     text-shadow: 0px 2px 10px darkgray;
 }
 
+
+
+
 .border {
 
-padding:2px;
+padding:1px;
 border: solid 2px gold;
-max-width: 400px;
-min-width: 400px;
+max-width: 340px;
+min-width: 340px;
 }
 .flex {
     display:flex;
@@ -80,5 +107,7 @@ min-width: 400px;
     padding:30px;
 }
 .button {position: absolute;
-bottom: 100px;
-right: 200px;}
+bottom: 20px;
+background-color: green;
+left: 40%;
+}

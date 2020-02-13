@@ -72,7 +72,7 @@ function Index() {
 
     
         <div className="main">
-<Navy />
+<Navy /><br/><br/><br/><br/><br/><br/>
 
         Marcus Sloss
 Leave a Comment / Uncategorized / By marcussloss

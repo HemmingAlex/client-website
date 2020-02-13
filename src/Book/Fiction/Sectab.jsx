@@ -92,7 +92,7 @@ function Sectab() {
                    
                     <TabPane tabId="iconPills1">
                       
-                      <div className={Style.box}>
+                      <div className={Style.fbox}>
                       <container>
 
                     <img src={L1} className={Style.border}/>
@@ -130,7 +130,7 @@ A mysterious curse rapidly sprawls forth every night as
 
                     </TabPane>
                     <TabPane tabId="iconPills2">
-                      <div className={Style.box}>
+                      <div className={Style.fbox}>
 
                         <container><img src={L2} className={Style.border}/></container>
                      
@@ -152,7 +152,7 @@ Join them as they travel the lands, battle the beasts, and try to save humanity!
          </container>         </div>
                     </TabPane>
                     <TabPane tabId="iconPills3">
-                    <div className={Style.box}>
+                    <div className={Style.fbox}>
 
 <container><img src={Lev1} className={Style.border}/></container>
 

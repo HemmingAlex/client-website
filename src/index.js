@@ -31,6 +31,7 @@ import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Fiction from "Book/Fiction/Fiction.jsx";
+import Gallary from "Book/Fiction/Gallary.jsx";
 import PoliticalTheory from "Book/PoliticalTheory/PoliticalTheory.jsx";
 import Intro from "Book/PoliticalTheory/Intro/Intro.jsx";
 
@@ -74,8 +75,8 @@ ReactDOM.render(
       
 
 <Route
-        path="/PoliticalTheory"
-        render={props => <PoliticalTheory {...props} />}
+        path="/Gallary"
+        render={props => <Gallary {...props} />}
       />
 
 <Route

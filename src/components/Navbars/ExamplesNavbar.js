@@ -127,7 +127,7 @@ function ExamplesNavbar() {
             >
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-controllable toooltip      </UncontrolledTooltip>
+Welcome      </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -142,11 +142,11 @@ controllable toooltip      </UncontrolledTooltip>
               <span className="navbar-toggler-bar bottom-bar"></span>
             </button>
           </div>
-         {/* <Collapse
+         <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}
             navbar
-         > */}
+         > 
             <Nav navbar>
               <NavItem><div >
               <button className={styles.button} onClick={() => history.goBack()}>
@@ -159,7 +159,7 @@ controllable toooltip      </UncontrolledTooltip>
               </NavItem>
 
               <NavItem>
-                <NavLink to="/Gallery" tag={Link}>
+                <NavLink to="/Gallary" tag={Link}>
               Gallery
                 </NavLink>
               </NavItem>
@@ -188,10 +188,11 @@ Home
                 <UncontrolledTooltip target="#facebook-tooltip">
                  Say hi on facebook!
                 </UncontrolledTooltip>
+                
               </NavItem>
               
             </Nav>
-{/*}          </Collapse>*/}
+          </Collapse>
 
 
         </Container>
