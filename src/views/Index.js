@@ -1,54 +1,25 @@
 import React from "react";
-import {
-  Button,
-  Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  UncontrolledTooltip
-} from "reactstrap";
+  import {Col, 
+    Row,
+    Container
+  } from 'reactstrap';
+  import LandingPageHeader from "../components/Headers/LandingPageHeader";
+  import Style from "./Fiction.module.scss";
+  import IndexNavbar from "../components/Navbars/IndexNavbar"
+  import Nav from "../components/Navbars/ExamplesNavbar"; 
+  import Read from '../assets/img/assets/ReadThanks.jpg';
+  import Head from "../components/Headers/LitHeader";
+  import Carosel from "./carosel";
+  import Tab from "./LitTab";
+  import News from "./LatestNews.jsx";
+  import Paper from "./PaperBook.jsx";
+  import Sectab from "./Sectab";
+  
 
-import { Link, useHistory } from "react-router-dom";
-
-
-
-// reactstrap components
-// import {
-// } from "reactstrap";
-
-// core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import Navy from "components/Navbars/ExamplesNavbar.js";
-import DarkFooter from "components/Footers/DarkFooter.js";
-
-// sections for this page
-import Images from "./index-sections/Images.js";
-import BasicElements from "./index-sections/BasicElements.js";
-import Navbars from "./index-sections/Navbars.js";
-import Tabs from "./index-sections/Tabs.js";
-import Pagination from "./index-sections/Pagination.js";
-import Notifications from "./index-sections/Notifications.js";
-import Typography from "./index-sections/Typography.js";
-import Javascript from "./index-sections/Javascript.js";
-import Carousel from "./index-sections/Carousel.js";
-import NucleoIcons from "./index-sections/NucleoIcons.js";
-import CompleteExamples from "./index-sections/CompleteExamples.js";
-import SignUp from "./index-sections/SignUp.js";
-import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
+  import Foot from "../components/Footers/DarkFooter";
 
 
-import LandingPage from "./examples/LandingPage";
-
-function Index() {
+const Index =() => {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -60,33 +31,43 @@ function Index() {
       document.body.classList.remove("sidebar-collapse");
     };
   });
+  
+      
+  
   return (
-    <>
-      <div className="wrapper">
-
-
-      <div>
-
-  </div>
-
-
-    
-        <div className="main">
-<Navy /><br/><br/><br/><br/><br/><br/>
-
-        Marcus Sloss
-Leave a Comment / Uncategorized / By marcussloss
-Quick Update I am digging through my files to ensure you have all the images I need applied.Quick update. All my books are in the process of getting professionally edited. Hurray! Thank you for taking the time to find out more about me. I am an avid reader and have decided to give my own …
-
-Marcus SlossRead More »  
-<NavLink to="/fiction" tag={Link}>
-back
-                  </NavLink>  </div>
-        
-
+  
+  <div className={Style.background}>
+    <Nav/><Head/>
+    <div className={Style.wrap}>
+      <Container>
+  
+  
+        <div className={Style.sbox}> <Col>
+        <img src={Read} className={Style.border}/>
+          <News/></Col>
       </div>
-    </>
+    </Container>
+  
+    </div>
+  
+  
+      <div className={Style.centre}> 
+        <i class="fas fa-road"/>
+    </div>
+  
+    {/*<Paper className={Style.box}/>*/}
+    <container className={Style.min}>
+    <Tab/>
+    <Sectab/>
+  </container> <Foot/> </div>
   );
-}
+  
+  };
+  
+  
+  
+  
+  
+
 
 export default Index;

@@ -11,7 +11,7 @@ function DefaultFooter() {
     <>
       <footer className="footer footer-default">
         <Container>
-         
+         webdist designed by Alexander Hemming :)
         </Container>
       </footer>
     </>

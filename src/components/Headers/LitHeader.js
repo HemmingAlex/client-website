@@ -33,34 +33,20 @@ function LandingPageHeader() {
         ></div>
         <div className="content-center">
           <Container>
-            <h1 className="title"> Marcus Sloss <br/> <br/>
+            <h1 className={`"title${Styles.shiny}`}> Marcus Sloss <br/> <br/>
             <br/>
             Max Geek</h1>
             <div className="text-center">
               <Button
                 className="btn-icon btn-round"
                 color="info"
-                href="#pablo"
+                href="https://www.facebook.com/marcus.sloss.524"
                 onClick={e => e.preventDefault()}
               >
                 <i className="fab fa-facebook-square"></i>
               </Button>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <i className="fab fa-twitter"></i>
-              </Button>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <i className="fab fa-google-plus"></i>
-              </Button>
+             
+            
             </div>
           </Container>
         </div>

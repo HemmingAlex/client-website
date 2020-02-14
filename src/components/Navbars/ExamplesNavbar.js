@@ -79,20 +79,21 @@ function ExamplesNavbar() {
               </DropdownItem>
 
 
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Action
-              </DropdownItem>
-
-
-              
            
 
-              <DropdownItem href="fiction">
-                Something else here
-            </DropdownItem>
+              <DropdownItem divider href="/Gallary">
+              <div className={styles.shiny}>
+                   
+                   <span>Gallery </span> </div>
+                        </DropdownItem>
+
+                        <DropdownItem  href="/About-me">
+              <div className={styles.shiny}>
+                   
+                   <span>About-me </span> </div>
+                        </DropdownItem>
 
 
-              <DropdownItem divider></DropdownItem>
                 <DropdownItem href="/">
                
                     <div className={styles.shiny}>
@@ -103,9 +104,9 @@ function ExamplesNavbar() {
 
 
                 
-                  <DropdownItem href="fiction" onClick={console.log("click")}>
+                  <DropdownItem href="/Blog" onClick={console.log("click")}>
                    
-                      <span className={styles.shiny}> Fiction! </span>
+                      <span className={styles.shiny}> Blog</span>
 
                         </DropdownItem>
 
@@ -153,8 +154,8 @@ Welcome      </UncontrolledTooltip>
               back <i class="fas fa-undo"></i></button></div>
               </NavItem>
               <NavItem>
-                <NavLink to="/Blog" tag={Link}>
-                Blog
+                <NavLink to="/About-me" tag={Link}>
+                About me
                 </NavLink>
               </NavItem>
 

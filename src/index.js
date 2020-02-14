@@ -26,12 +26,15 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "views/Index.js";
+import Blog from "views/Blog.jsx";
+
+
 import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Fiction from "Book/Fiction/Fiction.jsx";
-import Gallary from "Book/Fiction/Gallary.jsx";
+import Gallary from "views/Thanks.jsx";
 import PoliticalTheory from "Book/PoliticalTheory/PoliticalTheory.jsx";
 import Intro from "Book/PoliticalTheory/Intro/Intro.jsx";
 
@@ -62,8 +65,8 @@ ReactDOM.render(
         render={props => <ProfilePage {...props} />}
       />
             <Route
-        path="/fiction"
-        render={props => <Fiction {...props} />}
+        path="/Blog"
+        render={props => <Blog {...props} />}
       />
 
 
@@ -75,7 +78,7 @@ ReactDOM.render(
       
 
 <Route
-        path="/Gallary"
+        path="/About-me"
         render={props => <Gallary {...props} />}
       />
 

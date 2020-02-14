@@ -11,45 +11,37 @@ function DarkFooter() {
         <nav>
           <ul>
             <li>
+            
+            </li>
+            <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-dark-footer"
+                href="https://github.com/HemmingAlex"
                 target="_blank"
               >
-                Creative Tim
               </a>
             </li>
             <li>
               <a
-                href="http://presentation.creative-tim.com?ref=nukr-dark-footer"
+                href="Alex.Hemming.me.uk"
                 target="_blank"
               >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://blog.creative-tim.com?ref=nukr-dark-footer"
-                target="_blank"
-              >
-                Blog
               </a>
             </li>
           </ul>
         </nav>
         <div className="copyright" id="copyright">
-          © {new Date().getFullYear()}, Designed by{" "}
+          © 2020, Designed by Alexander Hemming
           <a
-            href="https://www.invisionapp.com?ref=nukr-dark-footer"
+            href="https://github.com/HemmingAlex"
             target="_blank"
           >
             Invision
           </a>
-          . Coded by{" "}
+          . Coded by Alexander Hemming
           <a
-            href="https://www.creative-tim.com?ref=nukr-dark-footer"
+            href="https://github.com/HemmingAlexr"
             target="_blank"
           >
-            Creative Tim
           </a>
           .
         </div>
