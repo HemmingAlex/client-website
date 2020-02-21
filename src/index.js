@@ -1,4 +1,4 @@
-/*
+/* Designed  by Alexander Hemming. With use of:
 
 =========================================================
 * Now UI Kit React - v1.0.0
@@ -29,17 +29,10 @@ import Index from "views/Index.js";
 import Blog from "views/Blog.jsx";
 
 
-import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import Fiction from "Book/Fiction/Fiction.jsx";
 import Gallary from "views/Thanks.jsx";
-import PoliticalTheory from "Book/PoliticalTheory/PoliticalTheory.jsx";
-import Intro from "Book/PoliticalTheory/Intro/Intro.jsx";
 
 //bot
-import Debate from "bot/Debate/Debate.jsx";
 
 
 
@@ -51,45 +44,23 @@ ReactDOM.render(
   <BrowserRouter>
   <Switch>
     <Switch>
-      <Route path="/index" render={props => <Index {...props} />} />
-      <Route
-        path="/nucleo-icons"
-        render={props => <NucleoIcons {...props} />}
-      />
-      <Route
-        path="/landing-page"
-        render={props => <LandingPage {...props} />}
-      />
-      <Route
-        path="/profile-page"
-        render={props => <ProfilePage {...props} />}
-      />
+      <Route path="/Home" render={props => <Index {...props} />} />
+     
             <Route
         path="/Blog"
         render={props => <Blog {...props} />}
       />
-
-
-
-<Route
-        path="/debate"
-        render={props => <Debate {...props} />}
-      />
-      
 
 <Route
         path="/About-me"
         render={props => <Gallary {...props} />}
       />
 
-<Route
-        path="/Intro"
-        render={props => <Intro {...props} />}
-      />
+
 
       <Route path="/login-page" render={props => <LoginPage {...props} />} />
-      <Redirect to="/index" />
-      <Redirect from="/" to="/index" />
+      <Redirect to="/Home" />
+      <Redirect from="/" to="/Home" />
     </Switch>
   </Switch>
 </BrowserRouter>,

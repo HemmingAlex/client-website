@@ -32,6 +32,7 @@ import Map5 from '../assets/img/assets/MapS.jpg';
 import Thanks from "../assets/img/assets/Thanks.jpg";
 
 
+
 const IMAGES =
 [{
         src: Read,
@@ -132,7 +133,13 @@ const IMAGES =
 },]
 
 class Gallary extends Component {
+
+
+     
+
+
     render() {
+        
         return (
             <div className={Style.Dark}>
 <Nav/><br/>

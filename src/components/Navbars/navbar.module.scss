@@ -1,12 +1,16 @@
 .shiny {
 
     color: #f96332;
+        font-weight: 400;
+
+    
 }
 
 .box {
     color:black;
     font-weight: bold;
     transition: all  0.3s linear;
+
 
     &:hover { box-shadow: -5px 1px 0px 0px black;   
         font-weight: bold;  

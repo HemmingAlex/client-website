@@ -41,8 +41,7 @@ function LandingPageHeader() {
                 className="btn-icon btn-round"
                 color="info"
                 href="https://www.facebook.com/marcus.sloss.524"
-                onClick={e => e.preventDefault()}
-              >
+target="_blank"              >
                 <i className="fab fa-facebook-square"></i>
               </Button>
              

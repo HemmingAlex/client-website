@@ -13,6 +13,16 @@
         }
     }
 
+   s{
+        vertical-align: middle;
+
+        &:not(.btn):not(.dropdown-item){
+            color: $orange-bg;
+        }
+    }
+
+    
+
     p{
         display: inline-block;
         margin: 0;

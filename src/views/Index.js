@@ -9,9 +9,8 @@ import React from "react";
   import Nav from "../components/Navbars/ExamplesNavbar"; 
   import Read from '../assets/img/assets/ReadThanks.jpg';
   import Head from "../components/Headers/LitHeader";
-  import Carosel from "./carosel";
   import Tab from "./LitTab";
-  import News from "./LatestNews.jsx";
+  import News from "../LatestNews.jsx";
   import Paper from "./PaperBook.jsx";
   import Sectab from "./Sectab";
   

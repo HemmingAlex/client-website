@@ -1,27 +1,47 @@
 import React, { Component } from 'react';
 import {Container} from "reactstrap";
 import Style from "./Fiction.module.scss";
-import Nav from "../components/Navbars/IndexNavbar";
+  import Nav from "../components/Navbars/BlogNav"; 
 
 import Foot from "../components/Footers/DarkFooter";
 
- class Blog extends Component {
-     
-    render() {
-        return (
 
+const Blog =() => {
+  React.useEffect(() => {
+    document.body.classList.add("index-page");
+    document.body.classList.add("sidebar-collapse");
+    document.documentElement.classList.remove("nav-open");
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    return function cleanup() {
+      document.body.classList.remove("index-page");
+      document.body.classList.remove("sidebar-collapse");
+    };
+  });
+  
+      
+  
+  return (
+  
+ 
             <div>
                 <Nav/>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <Container className={Style.tbody}> 
-                <br/>
-                <br/>
-                    
+            
                    <div className={Style.s}> <h2 className={Style.centre}> <strong>Interview</strong></h2></div>
                     <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                     
                     
                     <br/><hr/>
@@ -125,8 +145,14 @@ import Foot from "../components/Footers/DarkFooter";
             
             <Foot/>
             </div>
-        )
-    }
-}
+  );
+  
+  };
+  
+  
+  
+  
+  
 
-export default Blog
+
+export default Blog;

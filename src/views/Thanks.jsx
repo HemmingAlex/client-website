@@ -1,3 +1,4 @@
+
 import React, { Component, Col } from 'react'
 import Gallery from "./Gallary.jsx";
 import Style from "./Fiction.module.scss";
@@ -8,9 +9,24 @@ import Bird from "../assets/img/assets/Bird.png";
 import Foot from "../components/Footers/DarkFooter";
 
 
- class Thanks extends Component {
-    render() {
-        return (
+
+
+const Thanks =() => {
+  React.useEffect(() => {
+    document.body.classList.add("index-page");
+    document.body.classList.add("sidebar-collapse");
+    document.documentElement.classList.remove("nav-open");
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    return function cleanup() {
+      document.body.classList.remove("index-page");
+      document.body.classList.remove("sidebar-collapse");
+    };
+  });
+  
+      
+  
+  return (
             <div >
                 <Gallery/>
                 <br/>
@@ -106,10 +122,14 @@ feel free to join me there if you have input or would like to chat.
                 <br/>
                <Foot/>
             </div>
-        )
-    }
-}
+  );
+  
+  };
+  
+  
+  
+  
+  
 
-export default Thanks
 
-               
+export default Thanks;

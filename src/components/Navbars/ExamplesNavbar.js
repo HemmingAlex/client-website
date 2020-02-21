@@ -17,7 +17,7 @@ import {
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip
+  UncontrolledTooltip, Blog
 } from "reactstrap";
 
 function ExamplesNavbar() {
@@ -81,10 +81,10 @@ function ExamplesNavbar() {
 
            
 
-              <DropdownItem divider href="/Gallary">
+              <DropdownItem divider href="/Blog">
               <div className={styles.shiny}>
                    
-                   <span>Gallery </span> </div>
+                   <span>Blog </span> </div>
                         </DropdownItem>
 
                         <DropdownItem  href="/About-me">
@@ -160,8 +160,8 @@ Welcome      </UncontrolledTooltip>
               </NavItem>
 
               <NavItem>
-                <NavLink to="/Gallary" tag={Link}>
-              Gallery
+                <NavLink to="/Blog" tag={Link}>
+              Blog
                 </NavLink>
               </NavItem>
 
