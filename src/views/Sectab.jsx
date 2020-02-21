@@ -22,6 +22,7 @@ import Style from "./Fiction.module.scss";
 import L1 from "../assets/img/assets/L1.jpg";
 import L2 from "../assets/img/assets/L2.jpg";
 import Lev1 from "../assets/img/assets/Lev1.jpg";
+import Fin from "../assets/img/assets/FinalB.jpg";
 
 
 
@@ -66,13 +67,26 @@ function Sectab() {
                         The Lackey's War Book 2
                       </NavLink>
                     </NavItem>
-                    <NavItem> 
+                    <NavItem>
                       <NavLink
                         className={iconPills === "3" ? "active" : ""}
                         href="#pablo"
                         onClick={e => {
                           e.preventDefault();
                           setIconPills("3");
+                        }}
+                      >
+                        <i className="now-ui-icons shopping_cart-simple"></i>
+                        The Lackey's War Book 3
+                      </NavLink>
+                    </NavItem>
+                    <NavItem> 
+                      <NavLink
+                        className={iconPills === "4" ? "active" : ""}
+                        href="#pablo"
+                        onClick={e => {
+                          e.preventDefault();
+                          setIconPills("4");
                         }}
                       >
                         <i className="now-ui-icons shopping_shop"></i>
@@ -151,7 +165,33 @@ Join them as they travel the lands, battle the beasts, and try to save humanity!
 
          </container>         </div>
                     </TabPane>
-                    <TabPane tabId="iconPills3">
+
+
+ <TabPane tabId="iconPills3">
+                    <div className={Style.fbox}>
+
+<container><img src={Fin} className={Style.border}/></container>
+
+
+<container className={Style.padding}>
+<h3 className={Style.blue}>Logan and the Lackey's Realm</h3> 
+
+<div  className={Style.body}> 
+
+The fourth realm soars into the sky. A divine creation of the gods to weather 
+the coming invasion. Logan, Riya, and his family are faced with many tough choices as
+ the gods meddle. Join them as the adventure continues to find out how it all ends
+
+
+</div> 
+
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">buy book</Button>
+
+</container>       
+  </div>
+                    </TabPane>
+
+                    <TabPane tabId="iconPills4">
                     <div className={Style.fbox}>
 
 <container><img src={Lev1} className={Style.border}/></container>
@@ -180,6 +220,8 @@ Note - early YA work. No squeal is anticipated.
 </container>       
   </div>
                     </TabPane>
+
+                    
                   </TabContent>
                 </CardBody>
               </Card>

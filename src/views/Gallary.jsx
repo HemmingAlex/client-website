@@ -30,7 +30,7 @@ import Sixteen from '../assets/img/assets/Sixteen.jpg';
 import Seventeen from '../assets/img/assets/Seventeen.jpg';
 import Map5 from '../assets/img/assets/MapS.jpg';
 import Thanks from "../assets/img/assets/Thanks.jpg";
-
+import Fin from "../assets/img/assets/aFinal.jpg";
 
 
 const IMAGES =
@@ -87,6 +87,11 @@ const IMAGES =
 },{
     src: Twelve,
     thumbnail: Twelve,
+    thumbnailWidth: 174,
+    thumbnailHeight: 174,
+},{
+    src: Fin,
+    thumbnail: Fin,
     thumbnailWidth: 174,
     thumbnailHeight: 174,
 },{
