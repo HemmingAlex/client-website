@@ -1,0 +1,6 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["Ce9nn"]); }
+
+__d("MessengerJewelNotificationWebFunnelAction",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({INBOX_LINK_CLICKED:"inbox_link_click",MESSENGER_JEWEL_CLICKED:"messenger_jewel_clicked",NOTIFICATION_SETTINGS_TOGGLED:"notification_settings_toggled",PAGE_TAB_OPENED:"page_tab_opened",SETTINGS_LINK_CLICKED:"settings_link_clicked",THREAD_CLICKED:"thread_clicked"})}),null);
+__d("PageInboxEntryPoint",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({LEFT_NAV:"left_nav",CHAT_BAR:"chat_bar",PAGES_MANAGER:"pages_manager",NEWS_FEED:"news_feed",JEWEL_DROPDOWN:"jewel_dropdown"})}),null);
+__d("PageInboxEntryPointEvent",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({CLICK:"click",IMPRESSION:"impression",ERROR:"error"})}),null);
+__d("PageInboxEntryPointType",[],(function(a,b,c,d,e,f){e.exports=Object.freeze({CHAT_BAR:"chat_bar",ADMIN_HOVERCARD_HEADER:"admin_hovercard_header",ADMIN_HOVERCARD_INBOX_PREVIEW:"admin_hovercard_inbox_preview"})}),null);

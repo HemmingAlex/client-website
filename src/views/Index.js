@@ -1,34 +1,24 @@
 import React from "react";
+  import {Col, 
+    Row,
+    Container
+  } from 'reactstrap';
+  import LandingPageHeader from "../components/Headers/LandingPageHeader";
+  import Style from "./Fiction.module.scss";
+  import IndexNavbar from "../components/Navbars/IndexNavbar"
+  import Nav from "../components/Navbars/ExamplesNavbar"; 
+  import Read from '../assets/img/assets/ReadThanks.jpg';
+  import Head from "../components/Headers/LitHeader";
+  import Tab from "./LitTab";
+  import News from "../LatestNews.jsx";
+  import Paper from "./PaperBook.jsx";
+  import Sectab from "./Sectab";
+  
 
-// reactstrap components
-// import {
-// } from "reactstrap";
-
-// core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import DarkFooter from "components/Footers/DarkFooter.js";
-
-// sections for this page
-import Images from "./index-sections/Images.js";
-import BasicElements from "./index-sections/BasicElements.js";
-import Navbars from "./index-sections/Navbars.js";
-import Tabs from "./index-sections/Tabs.js";
-import Pagination from "./index-sections/Pagination.js";
-import Notifications from "./index-sections/Notifications.js";
-import Typography from "./index-sections/Typography.js";
-import Javascript from "./index-sections/Javascript.js";
-import Carousel from "./index-sections/Carousel.js";
-import NucleoIcons from "./index-sections/NucleoIcons.js";
-import CompleteExamples from "./index-sections/CompleteExamples.js";
-import SignUp from "./index-sections/SignUp.js";
-import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
+  import Foot from "../components/Footers/DarkFooter";
 
 
-import LandingPage from "./examples/LandingPage";
-
-function Index() {
+const Index =() => {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -40,26 +30,49 @@ function Index() {
       document.body.classList.remove("sidebar-collapse");
     };
   });
+  
+      
+  
   return (
-    <>
-      <div className="wrapper">
-
-
-      <div>
-
-  </div>
-
-
-    
-        <div className="main">
-          
-<LandingPage/>
-        </div>
-        
-
+  
+  <div className={Style.background}>
+    <Nav/><Head/>
+    <div className={Style.wrap}>
+      <Container>
+  
+  
+        <div className={Style.sbox}> <Col>
+        <img src={Read} className={Style.border}/>
+          <News/></Col>
       </div>
-    </>
+    </Container>
+  
+    </div>
+  
+  
+      <div className={Style.centre}> 
+        <i class="fas fa-road"/>
+    </div>
+  
+    {/*<Paper className={Style.box}/>*/}
+    <container className={Style.min}>
+    <Tab/>
+    <Sectab/>
+  </container>
+  <div class="fb-comments" 
+  data-href="https://marcussloss.com/Home" 
+  data-width="730" data-numposts="5">
+    
+    </div>
+   <Foot/> </div>
   );
-}
+  
+  };
+  
+  
+  
+  
+  
+
 
 export default Index;

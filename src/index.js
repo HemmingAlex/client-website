@@ -1,4 +1,4 @@
-/*
+/* Designed  by Alexander Hemming. With use of:
 
 =========================================================
 * Now UI Kit React - v1.0.0
@@ -26,16 +26,13 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "views/Index.js";
-import NucleoIcons from "views/NucleoIcons.js";
+import Blog from "views/Blog.jsx";
+import P from "views/Privacypolicy.jsx";
+
 import LoginPage from "views/examples/LoginPage.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import Fiction from "Book/Fiction/Fiction.jsx";
-import PoliticalTheory from "Book/PoliticalTheory/PoliticalTheory.jsx";
-import Intro from "Book/PoliticalTheory/Intro/Intro.jsx";
+import Gallary from "views/Thanks.jsx";
 
 //bot
-import Debate from "bot/Debate/Debate.jsx";
 
 
 
@@ -47,45 +44,29 @@ ReactDOM.render(
   <BrowserRouter>
   <Switch>
     <Switch>
-      <Route path="/index" render={props => <Index {...props} />} />
-      <Route
-        path="/nucleo-icons"
-        render={props => <NucleoIcons {...props} />}
-      />
-      <Route
-        path="/landing-page"
-        render={props => <LandingPage {...props} />}
-      />
-      <Route
-        path="/profile-page"
-        render={props => <ProfilePage {...props} />}
-      />
+      <Route path="/Home" render={props => <Index {...props} />} />
+     
             <Route
-        path="/fiction"
-        render={props => <Fiction {...props} />}
-      />
-
-
-
-<Route
-        path="/debate"
-        render={props => <Debate {...props} />}
-      />
-      
-
-<Route
-        path="/PoliticalTheory"
-        render={props => <PoliticalTheory {...props} />}
+        path="/Blog"
+        render={props => <Blog {...props} />}
       />
 
 <Route
-        path="/Intro"
-        render={props => <Intro {...props} />}
+        path="/About-me"
+        render={props => <Gallary {...props} />}
       />
+     
+     <Route
+ path="/privacypolicy"
+ render={props => <P {...props} />}
+/>
+
+
+
 
       <Route path="/login-page" render={props => <LoginPage {...props} />} />
-      <Redirect to="/index" />
-      <Redirect from="/" to="/index" />
+      <Redirect to="/Home" />
+      <Redirect from="/" to="/Home" />
     </Switch>
   </Switch>
 </BrowserRouter>,

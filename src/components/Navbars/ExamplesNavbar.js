@@ -17,7 +17,8 @@ import {
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip
+  UncontrolledTooltip, 
+  Blog
 } from "reactstrap";
 
 function ExamplesNavbar() {
@@ -32,7 +33,7 @@ function ExamplesNavbar() {
         document.documentElement.scrollTop > 399 ||
         document.body.scrollTop > 399
       ) {
-        setNavbarColor("green");
+        setNavbarColor("white");
       } else if (
         document.documentElement.scrollTop < 400 ||
         document.body.scrollTop < 400
@@ -56,7 +57,7 @@ function ExamplesNavbar() {
           }}
         />
       ) : null}
-      <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
+      <Navbar className={"fixed-top " + navbarColor} color="white" expand="lg">
         <Container>
           <UncontrolledDropdown className="button-dropdown">
             <DropdownToggle
@@ -79,26 +80,21 @@ function ExamplesNavbar() {
               </DropdownItem>
 
 
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Action
-              </DropdownItem>
-
-
-              <DropdownItem href="profile-page">
-
            
-                    <div className={styles.shiny}>
+
+              <DropdownItem divider href="/Blog">
+              <div className={styles.shiny}>
                    
-                    <span>profile </span> </div>
-             
-            </DropdownItem>
+                   <span>Blog </span> </div>
+                        </DropdownItem>
 
-              <DropdownItem href="fiction">
-                Something else here
-            </DropdownItem>
+                        <DropdownItem  href="/About-me">
+              <div className={styles.shiny}>
+                   
+                   <span>About-me </span> </div>
+                        </DropdownItem>
 
 
-              <DropdownItem divider></DropdownItem>
                 <DropdownItem href="/">
                
                     <div className={styles.shiny}>
@@ -108,17 +104,10 @@ function ExamplesNavbar() {
               </DropdownItem>
 
 
-                <DropdownItem divider></DropdownItem>
-
-                <DropdownItem href="PoliticalTheory" onClick={console.log("click")}>
+                
+                  <DropdownItem href="/Blog" onClick={console.log("click")}>
                    
-                   <span className={styles.shiny}> Politics </span>
-
-                     </DropdownItem>
-
-                  <DropdownItem href="fiction" onClick={console.log("click")}>
-                   
-                      <span className={styles.shiny}> Fiction! </span>
+                      <span className={styles.shiny}> Blog</span>
 
                         </DropdownItem>
 
@@ -140,7 +129,7 @@ function ExamplesNavbar() {
             >
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-controllable toooltip      </UncontrolledTooltip>
+Welcome      </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -155,42 +144,40 @@ controllable toooltip      </UncontrolledTooltip>
               <span className="navbar-toggler-bar bottom-bar"></span>
             </button>
           </div>
-         {/* <Collapse
+         <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}
             navbar
-         > */}
+         > 
             <Nav navbar>
-              <NavItem><div >
-              <button className={styles.button} onClick={() => history.goBack()}>
-              back <i class="fas fa-undo"></i></button></div>
+            
+              <NavItem>
+                <NavLink to="/About-me" tag={Link}>
+                About me
+                </NavLink>
               </NavItem>
+
+              <NavItem>
+                <NavLink to="/Blog" tag={Link}>
+              Blog
+                </NavLink>
+              </NavItem>
+
+
               <NavItem>
                 <NavLink to="/" tag={Link}>
-                  Back to Home/top
-                </NavLink>
+Home
+                  </NavLink>
               </NavItem>
 
 
-              <NavItem>
-                <NavLink
-                  href="https://stackoverflow.com/users/12030634/alexander-hemming"
-                  target="_blank"
-                  id="SO"
-                  >
-                  <i class="fab fa-stack-overflow"></i>
-                  <p className="d-lg-none d-xl-none">Stack Overflow</p>
-                </NavLink>
-                <UncontrolledTooltip target="#SO">
-                 Say hi on SO!
-                </UncontrolledTooltip>
-              </NavItem>
+          
 
 
 
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/alexander.hemming"
+                  href="https://www.facebook.com/marcus.sloss.524"
                   target="_blank"
                   id="facebook-tooltip"
                   >
@@ -200,10 +187,11 @@ controllable toooltip      </UncontrolledTooltip>
                 <UncontrolledTooltip target="#facebook-tooltip">
                  Say hi on facebook!
                 </UncontrolledTooltip>
+                
               </NavItem>
               
             </Nav>
-{/*}          </Collapse>*/}
+          </Collapse>
 
 
         </Container>

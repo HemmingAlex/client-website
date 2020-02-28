@@ -17,32 +17,40 @@ let history = useHistory();
 
 return (
     <div className={Style.fix}>
-      <p>NavBar</p>
+      <br/>
+      <br/>
+      <br/>
+      
+      <br/>
+      <br/>
+      <br/>
+      <p><strong> </strong></p>
       <Nav vertical>
       <NavItem>
           <span>  </span>
         </NavItem><br/><br/><br/><br/>
+
+
         <NavItem className={Style.box}>
           <NavLink href="/">Home</NavLink>
         </NavItem>
         <br/>
-        <NavItem>
-          <NavLink disabled href="#"></NavLink>
+        <br/>        
+        <NavItem className={Style.box}>
+          <NavLink href="/About-me">About-me <vr/></NavLink>
         </NavItem>
+        <br/>
+        <br/>
+
         <NavItem className={Style.box}>
-          <NavLink href="#">Chapter 1</NavLink>
+          <NavLink href="/Blog">Blog</NavLink>
         </NavItem><br/>
-        <NavItem className={Style.box}>
-          <NavLink href="#">Chapter 2</NavLink>
-        </NavItem><br/>
-        <NavItem className={Style.box}>
-          <NavLink href="#"></NavLink>
-        </NavItem><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </Nav>
       <hr />
 
-      <Button color="info" onClick={() => history.goBack()}>
-back?    </Button>
+      <Button color="primary" onClick={() => history.goBack()}>
+Back    </Button>
     
     </div>
   );
