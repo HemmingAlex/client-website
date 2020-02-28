@@ -128,6 +128,12 @@ feel free to join me there if you have input or would like to chat.
                 <br/>
                 <br/>
                 <br/>
+                <container className={Style.facebook}>
+  <div className={Style.facebook} class="fb-comments" 
+  data-href="https://marcussloss.com/About-me" 
+  data-width="1100" data-numposts="5">
+    
+    </div></container>
                <Foot/>
             </div>
   );
