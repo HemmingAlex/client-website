@@ -67,6 +67,7 @@ align-items: center;
 align-self: center;
 text-align: center;  
 overflow: hidden;
+height: 9025%;
 
 }
 
@@ -78,7 +79,7 @@ text-align: center;
 
 }
 .Dark {
-    background-color: darkslategray !important;
+    background-color: rgb(111, 109, 230) !important;
     height: 550px;
 }
 
@@ -140,7 +141,20 @@ background-color: green;
 left: 40%;
 }
 
+.sbutton {
+    border:none;
+    }
+    
+    
+
+
 .s {
     font-weight: 700;
     color: #f96332;
+}
+
+.ind {
+margin: 50px;
+font-size: 21px;
+text-indent: 50px;
 }

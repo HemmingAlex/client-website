@@ -58,7 +58,13 @@ const Index =() => {
     <container className={Style.min}>
     <Tab/>
     <Sectab/>
-  </container> <Foot/> </div>
+  </container>
+  <div class="fb-comments" 
+  data-href="https://marcussloss.com/Home" 
+  data-width="730" data-numposts="5">
+    
+    </div>
+   <Foot/> </div>
   );
   
   };

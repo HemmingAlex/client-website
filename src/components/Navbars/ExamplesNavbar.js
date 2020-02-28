@@ -17,7 +17,8 @@ import {
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip, Blog
+  UncontrolledTooltip, 
+  Blog
 } from "reactstrap";
 
 function ExamplesNavbar() {
@@ -149,10 +150,7 @@ Welcome      </UncontrolledTooltip>
             navbar
          > 
             <Nav navbar>
-              <NavItem><div >
-              <button className={styles.button} onClick={() => history.goBack()}>
-              back <i class="fas fa-undo"></i></button></div>
-              </NavItem>
+            
               <NavItem>
                 <NavLink to="/About-me" tag={Link}>
                 About me

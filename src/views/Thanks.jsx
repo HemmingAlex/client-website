@@ -95,16 +95,24 @@ const Thanks =() => {
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
               
                 <hr/>
 
                 <br/>
-                <br/>
-                <br/>
+           
                 <container>
                 <Container className={Style.centre}>
-                    <h2 className={Style.s}>Special Thanks</h2>
-                <img src={Bird} className={Style.sborder}/></Container>
+                    <h2 className={Style.s}><br/>Special Thanks</h2>
+                <img src={Bird} className={Style.sborder}/>
+                </Container>
 
 <Container className={Style.sbody}> 
 Thank you for taking the time to find out more about me. 

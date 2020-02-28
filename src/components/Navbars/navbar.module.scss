@@ -1,9 +1,15 @@
 .shiny {
 
-    color: #f96332;
+    color:white;
         font-weight: 400;
 
     
+}
+
+.unshift {
+
+    color:  #f96332;
+    font-weight: 400;
 }
 
 .box {
@@ -37,6 +43,21 @@ opacity:1;
 }
 }
 
+
+.sbutton {
+    background:transparent;
+    border: none !important;
+    color: black;
+    transition:all 0.3s linear;
+    &:hover {         background: rgba(187, 186, 186, 1);  
+
+    &:before {
+
+opacity:1;
+    }
+}
+}
+
 .fix {
     position:fixed;
     color:black;
@@ -46,4 +67,8 @@ opacity:1;
     border-right: 1px solid black;
     background-color: rgba(255,255,255,.7);
 
+}
+.flex {
+
+    display: flex;
 }

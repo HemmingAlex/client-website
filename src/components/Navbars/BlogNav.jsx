@@ -29,13 +29,13 @@ function BlogNav() {
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
-        document.documentElement.scrollTop > 399 ||
-        document.body.scrollTop > 399
+        document.documentElement.scrollTop > 11 ||
+        document.body.scrollTop > 11
       ) {
         setNavbarColor("white");
       } else if (
-        document.documentElement.scrollTop < 400 ||
-        document.body.scrollTop < 400
+        document.documentElement.scrollTop < 12 ||
+        document.body.scrollTop < 12
       ) {
         setNavbarColor("navbar-transparent");
       }
@@ -58,6 +58,7 @@ function BlogNav() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} color="white" expand="lg">
         <Container>
+     
           <UncontrolledDropdown className="button-dropdown">
             <DropdownToggle
               caret
@@ -75,7 +76,9 @@ function BlogNav() {
 
             <DropdownMenu aria-labelledby="navbarDropdown">
               <DropdownItem header tag="a">
+
                 Menue
+                
               </DropdownItem>
 
 
@@ -120,6 +123,7 @@ function BlogNav() {
 
 
 
+
           <div className="navbar-translate">
             <NavbarBrand
               href="www.google.com/bootstrap4"
@@ -128,7 +132,9 @@ function BlogNav() {
             >
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-Welcome      </UncontrolledTooltip>
+
+Welcome     
+ </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -149,29 +155,22 @@ Welcome      </UncontrolledTooltip>
             navbar
          > 
             <Nav navbar>
-              <NavItem><div >
-              <button className={styles.button} onClick={() => history.goBack()}>
-              back <i class="fas fa-undo"></i></button></div>
-              </NavItem>
               <NavItem>
                 <NavLink to="/About-me" tag={Link}>
-                <div className={styles.shiny}>
-                About me </div>
+               About me
                 </NavLink>
               </NavItem>
 
               <NavItem>
-                <NavLink to="/Blog" tag={Link}>                  <div className={styles.shiny}>
-
-              Blog </div>
+                <NavLink to="/Blog" tag={Link}>                
+                  Blog 
                 </NavLink>
               </NavItem>
 
 
               <NavItem>
-                <NavLink to="/" tag={Link}>                 <div className={styles.shiny}>
-
-Home </div>
+                <NavLink to="/" tag={Link}>      
+Home 
                   </NavLink>
               </NavItem>
 
