@@ -26,11 +26,11 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "views/Index.js";
-import Blog from "views/Blog.jsx";
+import About from "views/Blog.jsx";
 import P from "views/Privacypolicy.jsx";
 
 import LoginPage from "views/examples/LoginPage.js";
-import Gallary from "views/Thanks.jsx";
+import Gallery from "views/Thanks.jsx";
 
 //bot
 
@@ -47,13 +47,13 @@ ReactDOM.render(
       <Route path="/Home" render={props => <Index {...props} />} />
      
             <Route
-        path="/Blog"
-        render={props => <Blog {...props} />}
+        path="/About-me"
+        render={props => <About {...props} />}
       />
 
 <Route
-        path="/About-me"
-        render={props => <Gallary {...props} />}
+        path="/Gallery"
+        render={props => <Gallery {...props} />}
       />
      
      <Route

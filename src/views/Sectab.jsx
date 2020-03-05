@@ -137,7 +137,7 @@ A mysterious curse rapidly sprawls forth every night as
  Join them as they explore, fight, and navigate the world of Kyroo.
 
 </div> 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B0844PWKJG?notRedirectToSDP=1&ref_=dbs_mng_calw_1&storeType=ebooks" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0844PWKJG?notRedirectToSDP=1&ref_=dbs_mng_calw_1&storeType=ebooks" target="_blank">purchase here</Button>
 
                     </container></div>
 
@@ -161,7 +161,7 @@ Join them as they travel the lands, battle the beasts, and try to save humanity!
  
   </div> 
   
-  <Button className={Style.button} href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">buy book</Button>
+  <Button className={Style.button} href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">purchase here</Button>
 
          </container>         </div>
                     </TabPane>
@@ -185,7 +185,7 @@ the coming invasion. Logan, Riya, and his family are faced with many tough choic
 
 </div> 
 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">purchase here</Button>
 
 </container>       
   </div>
@@ -215,7 +215,7 @@ Note - early YA work. No squeal is anticipated.
 
 </div> 
 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">purchase here</Button>
 
 </container>       
   </div>

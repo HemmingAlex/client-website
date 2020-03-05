@@ -3,10 +3,22 @@ import React from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import Style from "./foot.module.scss"
 
 function DarkFooter() {
   return (
-    <footer className="footer" data-background-color="black">
+    <footer className={`${Style.back} footer`} >
+
+
+<container >
+  <div class="fb-comments" 
+  data-href="https://marcussloss.com/About-me" 
+  data-width="90%" data-numposts="5">
+    
+    </div></container>
+
+
+
       <Container>
         <nav>
           <ul>
@@ -35,7 +47,7 @@ function DarkFooter() {
             href="https://github.com/HemmingAlex"
             target="_blank"
           >
-            Invision
+             :) 
           </a>
           . Coded by Alexander Hemming
           <a
@@ -46,6 +58,7 @@ function DarkFooter() {
           .
         </div>
       </Container>
+   
     </footer>
   );
 }
