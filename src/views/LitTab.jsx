@@ -147,7 +147,7 @@ Warning contains gore with extreme violence;
  there is a harem and on occasion a sex scene!!!
 
 </div> 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B07YFWHDZX/ref=dbs_a_def_rwt_bibl_vppi_i1" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B07YFWHDZX/ref=dbs_a_def_rwt_bibl_vppi_i1" target="_blank">purchase here</Button>
 
                     </container></div>
 
@@ -177,7 +177,7 @@ and excitement awaits. Gryff now calls Vin home.
  
   </div> 
   
-  <Button className={Style.button} href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">buy book</Button>
+  <Button className={Style.button} href="https://www.amazon.com/gp/product/B0811V977Q/ref=dbs_a_def_rwt_bibl_vppi_i0" target="_blank">purchase here</Button>
 
          </container>         </div>
                     </TabPane>
@@ -199,7 +199,7 @@ Adventure with Gryff as he strives to save Vin and the Universe!
 
 </div> 
 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0829FNB4Q/ref=dbs_a_def_rwt_bibl_vppi_i5" target="_blank">purchase here</Button>
 
 </container>       
   </div>
@@ -231,7 +231,7 @@ Gryff adventures in the Gaming Verse on his quest to return home.
 
 </div> 
 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B0849LPTKR/ref=dbs_a_def_rwt_hsch_vapi_taft_p1_i0" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B0849LPTKR/ref=dbs_a_def_rwt_hsch_vapi_taft_p1_i0" target="_blank">purchase here</Button>
 
 </container>         </div>
                     </TabPane>
@@ -266,7 +266,7 @@ us humans for failing to integrate and advance. Insert Mack… A young man
 
 </div>
 
-<Button className={Style.button} href="https://www.amazon.com/gp/product/B07Z5S29D6/ref=dbs_a_def_rwt_bibl_vppi_i2" target="_blank">buy book</Button>
+<Button className={Style.button} href="https://www.amazon.com/gp/product/B07Z5S29D6/ref=dbs_a_def_rwt_bibl_vppi_i2" target="_blank">purchase here</Button>
 
 </Container>
 

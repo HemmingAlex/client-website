@@ -59,12 +59,7 @@ const Index =() => {
     <Tab/>
     <Sectab/>
   </container>
-  <container className={Style.facebook}>
-  <div className={Style.facebook} class="fb-comments" 
-  data-href="https://marcussloss.com/Home" 
-  data-width="1100" data-numposts="5">
-    
-    </div></container>
+ 
    <Foot/> </div>
   );
   

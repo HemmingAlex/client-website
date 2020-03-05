@@ -82,16 +82,16 @@ function ExamplesNavbar() {
 
            
 
-              <DropdownItem divider href="/Blog">
-              <div className={styles.shiny}>
-                   
-                   <span>Blog </span> </div>
-                        </DropdownItem>
-
-                        <DropdownItem  href="/About-me">
+              <DropdownItem divider href="/About-me">
               <div className={styles.shiny}>
                    
                    <span>About-me </span> </div>
+                        </DropdownItem>
+
+                        <DropdownItem  href="/Gallery">
+              <div className={styles.shiny}>
+                   
+                   <span>Gallery </span> </div>
                         </DropdownItem>
 
 
@@ -105,9 +105,9 @@ function ExamplesNavbar() {
 
 
                 
-                  <DropdownItem href="/Blog" onClick={console.log("click")}>
+                  <DropdownItem href="/About-me" onClick={console.log("click")}>
                    
-                      <span className={styles.shiny}> Blog</span>
+                      <span className={styles.shiny}> About-me</span>
 
                         </DropdownItem>
 
@@ -150,18 +150,19 @@ Welcome      </UncontrolledTooltip>
             navbar
          > 
             <Nav navbar>
-            
-              <NavItem>
+               <NavItem>
                 <NavLink to="/About-me" tag={Link}>
-                About me
-                </NavLink>
-              </NavItem>
+About-me               </NavLink>
 
-              <NavItem>
-                <NavLink to="/Blog" tag={Link}>
-              Blog
-                </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink to="/Gallery" tag={Link}>
+Gallery                </NavLink>
+              </NavItem>
+           
+
+              
+
 
 
               <NavItem>

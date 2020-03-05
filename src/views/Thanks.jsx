@@ -121,19 +121,14 @@ I am an avid reader and have decided to give my own take on my own stories.
  Writing is challenging and rewarding. I appreciate constructive feedback and am working on improving. 
 At the end of my book is a discord and Facebook link, 
 feel free to join me there if you have input or would like to chat.
-</Container></container>
+</Container></container> 
                 <br/>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
-                <container className={Style.facebook}>
-  <div className={Style.facebook} class="fb-comments" 
-  data-href="https://marcussloss.com/About-me" 
-  data-width="1100" data-numposts="5">
-    
-    </div></container>
+                
                <Foot/>
             </div>
   );

@@ -13,7 +13,7 @@ export class About extends Component {
 <hr/>
             <br/>
            
-               <h1 className={Style.centre}> About Me</h1>
+               <h1 className={Style.centre}> Welcome</h1>
                 <br/>
                 <br/><Container className={Style.sbody}>
               I write for the joy of writing. This has been something I attempted to do for years. 

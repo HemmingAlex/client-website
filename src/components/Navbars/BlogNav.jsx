@@ -84,10 +84,10 @@ function BlogNav() {
 
            
 
-              <DropdownItem divider href="/Blog">
+              <DropdownItem divider href="/Gallery">
               <div className={styles.shiny}>
                    
-                   <span>Blog </span> </div>
+                   <span>Gallery </span> </div>
                         </DropdownItem>
 
                         <DropdownItem  href="/About-me">
@@ -107,9 +107,9 @@ function BlogNav() {
 
 
                 
-                  <DropdownItem href="/Blog" onClick={console.log("click")}>
+                  <DropdownItem href="/Gallery" onClick={console.log("click")}>
                    
-                      <span className={styles.shiny}> Blog</span>
+                      <span className={styles.shiny}> Gallery</span>
 
                         </DropdownItem>
 
@@ -162,8 +162,8 @@ Welcome
               </NavItem>
 
               <NavItem>
-                <NavLink to="/Blog" tag={Link}>                
-                  Blog 
+                <NavLink to="/Gallery" tag={Link}>                
+                  Gallery 
                 </NavLink>
               </NavItem>
 

@@ -11,7 +11,9 @@ import Style from "./views/Fiction.module.scss";
 
 <h1><i>LATEST NEWS!</i></h1>
 
-<p>The audible releases are comming soon!</p>
+<h4>CyberViking is half way done, here is the cover. <br/>   
+    Audiobooks are in production with Gryff needing approval from ACX. 
+    Logan 3 releases 3/6/20.</h4>
             </div>
         )
     }
