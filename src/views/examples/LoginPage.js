@@ -1,143 +1,73 @@
-import React from "react";
+// Import FirebaseAuth and firebase.
+import React from 'react';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 
-// reactstrap components
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Col
-} from "reactstrap";
+// Configure Firebase.
+const config = {
+  apiKey: "AIzaSyAmHgtoKJhYjr4L2VRTlYWwIJr-GVyk6s8",
+  authDomain: "marcussloss.com.com",
+  databaseURL: "https://marcussloss.com",
+  projectId: "marcuoss-adf73",
+  storageBucket: "marcuoss-adf73.appspot.com",
+  messagingSenderId: "1083670325472",
+  appId: "1:1083670325472:web:f5099b5855331640be0885",
+  measurementId: "G-6G2TG44B1E"
+  // ...
+};
+firebase.initializeApp(config);
 
-// core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
+class LoginPage extends React.Component {
 
-function LoginPage() {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
-  React.useEffect(() => {
-    document.body.classList.add("login-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    return function cleanup() {
-      document.body.classList.remove("login-page");
-      document.body.classList.remove("sidebar-collapse");
-    };
-  });
-  return (
-    <>
-      <ExamplesNavbar />
-      <div className="page-header clear-filter" filter-color="blue">
-        <div
-          className="page-header-image"
-          style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
-          }}
-        ></div>
-        <div className="content">
-          <Container>
-            <Col className="ml-auto mr-auto" md="4">
-              <Card className="card-login card-plain">
-                <Form action="" className="form" method="">
-                  <CardHeader className="text-center">
-                    <div className="logo-container">
-                      <img
-                        alt="..."
-                        src={require("assets/img/now-logo.png")}
-                      ></img>
-                    </div>
-                  </CardHeader>
-                  <CardBody>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (firstFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons users_circle-08"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="First Name..."
-                        type="text"
-                        onFocus={() => setFirstFocus(true)}
-                        onBlur={() => setFirstFocus(false)}
-                      ></Input>
-                    </InputGroup>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons text_caps-small"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="Last Name..."
-                        type="text"
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
-                      ></Input>
-                    </InputGroup>
-                  </CardBody>
-                  <CardFooter className="text-center">
-                    <Button
-                      block
-                      className="btn-round"
-                      color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                      size="lg"
-                    >
-                      Get Started
-                    </Button>
-                    <div className="pull-left">
-                      <h6>
-                        <a
-                          className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          Create Account
-                        </a>
-                      </h6>
-                    </div>
-                    <div className="pull-right">
-                      <h6>
-                        <a
-                          className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          Need Help?
-                        </a>
-                      </h6>
-                    </div>
-                  </CardFooter>
-                </Form>
-              </Card>
-            </Col>
-          </Container>
+  // The component's Local state.
+  state = {
+    isSignedIn: false // Local signed-in state.
+  };
+
+  // Configure FirebaseUI.
+  uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      // Avoid redirects after sign-in.
+      signInSuccessWithAuthResult: () => false
+    }
+  };
+
+  // Listen to the Firebase Auth state and set the local state.
+  componentDidMount() {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+        (user) => this.setState({isSignedIn: !!user})
+    );
+  }
+  
+  // Make sure we un-register Firebase observers when the component unmounts.
+  componentWillUnmount() {
+    this.unregisterAuthObserver();
+  }
+
+  render() {
+    if (!this.state.isSignedIn) {
+      return (
+        <div>
+          <h1>My App</h1>
+          <p>Please sign-in:</p>
+          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         </div>
-        <TransparentFooter />
+      );
+    }
+    return (
+      <div>
+        <h1>The google one still doesnt work?</h1>
+        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
       </div>
-    </>
-  );
+    );
+  }
 }
-
 export default LoginPage;

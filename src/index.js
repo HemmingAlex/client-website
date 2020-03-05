@@ -31,7 +31,7 @@ import P from "views/Privacypolicy.jsx";
 
 import LoginPage from "views/examples/LoginPage.js";
 import Gallery from "views/Thanks.jsx";
-
+// import { AuthProvider } from "./fire/Auth.js";
 //bot
 
 
