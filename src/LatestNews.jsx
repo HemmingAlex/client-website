@@ -3,6 +3,7 @@ import Style from "./views/Fiction.module.scss";
 
 
 
+
  class LatestNews extends Component {
     render() {
         return (
