@@ -31,9 +31,19 @@ import P from "views/Privacypolicy.jsx";
 
 import LoginPage from "views/examples/LoginPage.js";
 import Gallery from "views/Thanks.jsx";
-// import { AuthProvider } from "./fire/Auth.js";
+
 //bot
 
+
+const admin = require('firebase-admin');
+
+let serviceAccount = require("./assets/DB/marcuoss-adf73-16794a9c99fa.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+let db = admin.firestore();
 
 
 

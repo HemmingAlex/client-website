@@ -2,6 +2,7 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 // Configure Firebase.
 const config = {
@@ -17,7 +18,21 @@ const config = {
 };
 firebase.initializeApp(config);
 
+
+
+let firestore = firebase.firestore();
+
+const docRef = firestore.doc("news/latest");
+
 class LoginPage extends React.Component {
+
+
+  constructor(props) {
+    super(props);
+    // create a ref to store the textInput DOM element
+    this.textInput = React.createRef();
+  }
+
 
   // The component's Local state.
   state = {
@@ -51,21 +66,57 @@ class LoginPage extends React.Component {
     this.unregisterAuthObserver();
   }
 
+
+
+
   render() {
     if (!this.state.isSignedIn) {
       return (
         <div>
-          <h1>My App</h1>
+          <h1>unsure if google link works</h1>
           <p>Please sign-in:</p>
           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         </div>
       );
     }
+
+    function add() 
+    {
+      const textToSave = this.textInput.current.value;
+
+      console.log("saving", textToSave, "to firestore")
+
+      docRef.set({
+
+        bookNews: textToSave
+      }).then(
+        function(){console.log("is this actually working?");}
+      )
+    }
+
+
     return (
       <div>
-        <h1>The google one still doesnt work?</h1>
+        <h1>HI</h1>
         <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+
+
         <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+<Form>
+<FormGroup>
+        <Label for="news">Latest news (text only)</Label>
+        <hr/>
+        <Input type="textarea" name="text" id="news" ref={this.textInput}/>
+      </FormGroup>
+      <Button onClick={this.add}>Submit</Button>
+
+
+
+      </Form>
       </div>
     );
   }
