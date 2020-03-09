@@ -22,75 +22,11 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
-//create a test collection of data here:
-//(Create a new collection and a document using the following example code.)
-
-// db.collection("users").add({
-//   first: "Ada",
-//   last: "Lovelace",
-//   born: 1815
-// })
-// .then(function(docRef) {
-//   console.log("Document written with ID: ", docRef.id);
-// })
-// .catch(function(error) {
-//   console.error("Error adding document: ", error);
-// });
-
-// add something else to the doc
-// ((((Now add another document to the users
-//  collection. Notice that this document includes a key-value pair 
-//  (middle name) that does not appear in the first document.
-//  Documents in a collection can contain different sets of information. ))))
-
-
-
-
-db.collection("news").add({
-  lNews: "news",
-  middle: "Mathison",
-  last: "Turing",
-  born: 1912
-})
-.then(function(docRef) {
-  console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-  console.error("Error adding document: ", error);
-});
-
-//the get
-//
-
-db.collection("users").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-  });
-});
-
-
-
-// read
-
-db.collection("users").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-  });
-});
-
-
-///the rest of the rubbish
 
 
 
 
 
-
-
-// let firestore = firebase.firestore();
-
-// const docRef = firestore.doc("news/latest");
-//what?
 
 class LoginPage extends React.Component {
 
@@ -98,34 +34,13 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // create a ref to store the textInput DOM element
-    this.textInput = React.createRef();
+    // this.textInput = React.createRef();
     this.state = {
-      lNews: '',
+      word: '',
+      isSignedIn: false
     }
   }
 
-
-  //word test unsure
-
-
-   newsChange = (event) => {
-       this.setState({
-
-   lNews: event.target.value
-       })
-       }
-       
-
-
-       submit = (event) => {
-           alert(`this ${this.state.lNews}`);
-           let lNews = this.state.lNews
-
-       }  
-
-
-
-  //word finished
 
 
 
@@ -136,9 +51,9 @@ class LoginPage extends React.Component {
 
   // ((((( ----- authntication----
   // The component's Local state.
-  state = {
-    isSignedIn: false // Local signed-in state.
-  };
+  // state = {
+  //   isSignedIn: false // Local signed-in state.
+  // };
 
   // Configure FirebaseUI.
   uiConfig = {
@@ -175,6 +90,24 @@ class LoginPage extends React.Component {
 
 
 
+newsChange = (event) => {
+  this.setState({
+    word: event.target.value
+  })
+  }
+  
+
+  submit = event => {
+   alert(`this ${this.state.word} ha`)
+   event.preventDefault()
+   
+               db.collection("Marcus").add({
+             Lnews: `${this.state.word}`
+            })
+           
+
+}  
+
   render() {
     if (!this.state.isSignedIn) {
       return (
@@ -186,20 +119,8 @@ class LoginPage extends React.Component {
       );
     }
 
-    // function add() 
-    // {
-    //   const textToSave = this.textInput.current.value;
 
-    //   console.log("saving", textToSave, "to firestore")
-
-    //   docRef.set({
-
-    //     bookNews: textToSave
-    //   }).then(
-    //     function(){console.log("is this actually working?");}
-    //   )
-    // }
-
+    
 
     return (
       <div>
@@ -212,21 +133,25 @@ class LoginPage extends React.Component {
         <br/>
         <br/>
         <br/>
-<Form onSubmit={this.submit}>
-<FormGroup>
-        <Label for="news">Latest news (text only)</Label>
-        <hr/>
-        <Input type="textarea" 
-        name="text"
-         id="news" 
-         vlaue= {this.state.lNews}
-         onChange={this.state.newsChange}
-         placeholder={this.state.lNews}
-          ref={this.textInput}/>
-      </FormGroup>
-      <Button onClick={this.add}>Submit</Button>
 
-      {/* <input type="text" value={this.state.username} onChange={this.handleChange}> */}
+
+
+<Form onSubmit={this.submit}>
+        <label >Latest news (text only)</label>
+
+
+
+        <hr/>
+
+
+
+        <Input type="textarea" 
+  value= {this.state.word}
+  onChange= {this.newsChange}/>
+
+
+
+      <Button type="submit"> Submit </Button>
 
       </Form>
       </div>
