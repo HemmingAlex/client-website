@@ -32,18 +32,11 @@ import P from "views/Privacypolicy.jsx";
 import LoginPage from "views/examples/LoginPage.js";
 import Gallery from "views/Thanks.jsx";
 
+import Word from "views/Word.jsx";
 //bot
 
 
-const admin = require('firebase-admin');
 
-let serviceAccount = require("./assets/DB/marcuoss-adf73-16794a9c99fa.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
-
-let db = admin.firestore();
 
 
 
@@ -70,7 +63,10 @@ ReactDOM.render(
  path="/privacypolicy"
  render={props => <P {...props} />}
 />
-
+<Route
+ path="/word"
+ render={props => <Word {...props} />}
+/>
 
 
 
