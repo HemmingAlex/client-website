@@ -8,7 +8,7 @@ function Two() {
     useEffect(() => {
         firebase
         .firestore()
-        .collection('times')
+        .collection('mNews')
         .onSnapshot((snapshot) => {
             const newTimes = snapshot.docs.map((doc) =>({
                     id: doc.id,

@@ -87,7 +87,7 @@ newsChange = (event) => {
    alert(`this ${this.state.word} ha`)
    event.preventDefault()
    
-               db.collection("times").doc("one").set({  
+               db.collection("mNews").doc("one").set({  
              Lnews: `${this.state.word}`
             })
            

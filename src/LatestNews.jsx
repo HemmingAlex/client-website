@@ -139,7 +139,7 @@ var db = firebase.firestore();
 
 
 
-            <div> <br/><br/>
+            <div> <br/><br/><h1><i>LATEST NEWS!</i></h1>
                   <h1 className={Style.blue}>Marcus Sloss</h1>
                   {/* {this.state.test} */}
 
@@ -147,11 +147,9 @@ var db = firebase.firestore();
                   <br/>
                   <Time/></h4>
 
-<h1><i>LATEST NEWS!</i></h1>
 
-<h4>CyberViking is half way done, here is the cover. <br/>   
-    Audiobooks are in production with Gryff needing approval from ACX. 
-    Logan 3 releases 3/6/20.</h4>
+
+<h4></h4>
 
 
 
