@@ -145,7 +145,7 @@ var db = firebase.firestore();
 
                   <h4>
                   <br/>
-                  <Time/></h4>
+                  <strong><Time/></strong></h4>
 
 
 

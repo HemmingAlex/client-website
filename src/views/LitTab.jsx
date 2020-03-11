@@ -39,7 +39,7 @@ function LitTab() {
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" md="10" xl="100">
-              <p className="category">Tabs with Icons on Card</p>
+              <p className="category">Gryff</p>
               <Card>
                 <CardHeader>
                   <Nav className="justify-content-center" role="tablist" tabs>
