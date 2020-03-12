@@ -7,7 +7,7 @@ import Gallery from 'react-grid-gallery';
 
 import Nav from "../components/Navbars/ExamplesNavbar"; 
 import Style from "./Fiction.module.scss";
-import Head from "../components/Headers/LitHeader";
+import Head from "../components/Headers/Gallaryheader.jsx";
 
 import About from "./About.jsx";
 

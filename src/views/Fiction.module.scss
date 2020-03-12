@@ -145,8 +145,17 @@ left: 40%;
     border:none;
     }
     
-    
+.darkMode {
+    filter:invert(1)
+    hue-rotate(180deg);
+    background-color: white;
 
+}
+    
+.normalMode{
+    filter: invert(0)
+    hue-rotate(0);
+}
 
 .s {
     font-weight: 700;
@@ -163,4 +172,8 @@ text-indent: 50px;
     display: inline-block;
 text-align: centre;
 margin-left: 40px;
+}
+.whate {
+
+    background-color: white;
 }

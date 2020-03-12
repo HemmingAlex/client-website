@@ -32,7 +32,10 @@ import P from "views/Privacypolicy.jsx";
 import LoginPage from "views/examples/LoginPage.js";
 import Gallery from "views/Thanks.jsx";
 
+import Word from "views/Word.jsx";
 //bot
+
+
 
 
 
@@ -60,7 +63,10 @@ ReactDOM.render(
  path="/privacypolicy"
  render={props => <P {...props} />}
 />
-
+<Route
+ path="/word"
+ render={props => <Word {...props} />}
+/>
 
 
 
