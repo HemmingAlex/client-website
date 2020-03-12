@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import {Container} from "reactstrap";
+import React, { useState, useEffect } from 'react';
+import {Container,
+Button
+} from "reactstrap";
 import Style from "./Fiction.module.scss";
   import Nav from "../components/Navbars/BlogNav"; 
 
@@ -17,24 +19,47 @@ const Blog =() => {
       document.body.classList.remove("index-page");
       document.body.classList.remove("sidebar-collapse");
     };
+
+
+
+    
   });
   
+
+  //sexy
+
+  
+  const [Mode, setMode] = useState(Style.normalMode)
+
+  function sexyDarkModeButton() 
+  {
+    if (Mode == Style.darkMode)
+
+    { 
+      setMode(Style.normalMode)
+     } 
+     else {
+       setMode(Style.darkMode)
+     }
+  } 
+ 
+
       
   
   return (
   
  
-            <div>
-                <Nav/>
+            <div> 
+                <Nav className={Mode} dark={sexyDarkModeButton}/><div className={Mode}>
                 <br/>
                 <br/>
                 <br/>
+              <br/>
                 <br/>
                 <br/>
                 <br/>
-                <br/>
-                <br/>
-                <Container className={Style.tbody}> 
+                <Container className={`${Style.tbody} ${Style.white}`}> 
+
             
                    <div className={Style.s}> <h2 className={Style.centre}> <strong>Interview</strong></h2></div>
                     <br/>
@@ -142,8 +167,9 @@ const Blog =() => {
             <div>&nbsp;</div>
             <div>I am here to write and to some extent help others write. I can help with the publishing side. A good place to find artists, which narrators to avoid, which editors to avoid, and how to handle advertising. If you ask me to look at your work I will give it a skim. This is absolutely one hundred percent not against you. I write seven days a week and do not even read books I want to anymore. A skim gives me a feel of your writing and lets me give you feedback. Hint. Hire a cheap editor on Fiverr and get some feedback from a professional. I did this and learned a bunch. I am a writer of stories. I am not an expert in grammar and I hope to improve that. Reach out to me if you do need help with a process or a story concept.&nbsp;&nbsp;</div>
             <div>&nbsp;</div></Container>
+
             
-            <Foot/>
+            <Foot/></div>
             </div>
   );
   

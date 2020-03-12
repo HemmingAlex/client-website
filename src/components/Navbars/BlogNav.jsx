@@ -20,7 +20,7 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-function BlogNav() {
+function BlogNav(props) {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
 
@@ -154,12 +154,17 @@ Welcome
             isOpen={collapseOpen}
             navbar
          > 
-            <Nav navbar>
+            <Nav navbar> 
+            <NavItem>
+                <NavLink tag={Link} onClick={props.dark}> Darkmode? </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink to="/About-me" tag={Link}>
                About me
                 </NavLink>
               </NavItem>
+
+             
 
               <NavItem>
                 <NavLink to="/Gallery" tag={Link}>                
