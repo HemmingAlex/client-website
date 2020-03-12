@@ -41,13 +41,13 @@ const test = () => {
 
                 {times.map((time) =>
                 
-                <li key={time.id}>
+                <div key={time.id}>
 {/* <div>{time.title}</div> */}
 
 <div> {time.Lnews}</div>
 
 {/* <code > {time.time_seconds}</code> */}
-                </li>
+                </div>
                 )}
 
             </ol>
