@@ -38,9 +38,9 @@ function LitTab() {
       <div>
         <Container>
           <Row>
-            <Col className="ml-auto mr-auto" md="10" xl="100">
+            <Col className={`ml-auto mr-auto`} md="10" xl="100">
               <p className="category">Gryff</p>
-              <Card>
+              <Card className={Style.bage}>
                 <CardHeader>
                   <Nav className="justify-content-center" role="tablist" tabs>
                     <NavItem>
